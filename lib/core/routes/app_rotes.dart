@@ -1,4 +1,5 @@
 import 'package:edunexus/core/routes/routes.dart';
+import 'package:edunexus/feature/on_boarding/on_boarding.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,8 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.splash:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
+      case Routes.onBoarding:
+        return MaterialPageRoute(builder: (context) => const OnBoardingScreen());
     }
     return null;
   }
