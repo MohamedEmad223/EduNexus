@@ -34,7 +34,7 @@ class OnBoardingScreen extends StatelessWidget {
                   color: Color(0xffFF6636),
                   textColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                   child: const Text("Login"),
                 ),
@@ -49,7 +49,7 @@ class OnBoardingScreen extends StatelessWidget {
                   textColor: Color(0xffFF6636),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(color: Color(0xffFF6636), width: 2.5),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                   child: const Text("Register"),
                 ),
