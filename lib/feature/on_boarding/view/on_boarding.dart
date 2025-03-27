@@ -40,7 +40,7 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50.h),
-              BorderButtonWidgets(text: "Register"),
+              BorderButtonWidgets(text: "Register", onPressed: () {}),
             ],
           ),
         ),
