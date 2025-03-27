@@ -1,6 +1,5 @@
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../core/helper/app_images.dart';
 
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(child: SvgPicture.asset(AppImages.splashLogo)),
+        child: Center(child: Image.asset(AppImages.splashLogo)),
       ),
     );
   }
