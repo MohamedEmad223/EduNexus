@@ -1,14 +1,17 @@
-import 'package:edunexus/feature/on_boarding/on_boarding.dart';
+import 'package:edunexus/core/routes/app_rotes.dart';
+import 'package:edunexus/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class EduNeuxus extends StatelessWidget {
-  const EduNeuxus({super.key});
+  const EduNeuxus({super.key, required this.appRoutes});
+  final AppRoutes appRoutes;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const OnBoarding(),
+      onGenerateRoute: appRoutes.generateRoute,
+      initialRoute: Routes.splash,
     );
   }
 }
