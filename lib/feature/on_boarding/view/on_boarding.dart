@@ -2,6 +2,7 @@ import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -13,19 +14,19 @@ class OnBoardingScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.h),
           child: Column(
             children: [
-              SizedBox(height: 50),
+              SizedBox(height: 50.h),
               SvgPicture.asset(AppImages.onBoardingImage),
               Text(
                 "Find yourself by doing\n whatever you do",
                 textAlign: TextAlign.center,
                 style: AppTextStyle.poppins20BoldblackColor,
               ),
-              const SizedBox(height: 100),
+              SizedBox(height: 100.h),
               SizedBox(
-                height: 55,
+                height: 55.h,
                 width: double.infinity,
                 child: MaterialButton(
                   onPressed: () {},
@@ -40,17 +41,20 @@ class OnBoardingScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              SizedBox(height: 50.h),
               SizedBox(
-                height: 55,
+                height: 55.h,
                 width: double.infinity,
                 child: MaterialButton(
                   onPressed: () {},
                   color: Colors.white,
                   textColor: AppColor.primaryColor,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(color: AppColor.primaryColor, width: 2.5),
-                    borderRadius: BorderRadius.circular(30),
+                    side: BorderSide(
+                      color: AppColor.primaryColor,
+                      width: 2.5.w,
+                    ),
+                    borderRadius: BorderRadius.circular(30.r),
                   ),
                   child: Text(
                     "Register",
