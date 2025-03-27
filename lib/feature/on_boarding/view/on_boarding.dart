@@ -1,6 +1,7 @@
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/core/widgets/border_button_widgets.dart';
-import 'package:edunexus/core/widgets/default_button_widgets.dart';
 import 'package:edunexus/feature/on_boarding/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,22 @@ class OnBoardingScreen extends StatelessWidget {
               SvgPicture.asset(AppImages.onBoardingImage),
               TextWidgets(),
               SizedBox(height: 100.h),
-              DefaultButtonWidgets(text: "Login"),
+              SizedBox(
+                height: 55.h,
+                width: double.infinity,
+                child: MaterialButton(
+                  onPressed: () {},
+                  color: AppColor.primaryColor,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.sp),
+                  ),
+                  child: Text(
+                    "Login",
+                    style: AppTextStyle.poppins14BoldwhiteColor,
+                  ),
+                ),
+              ),
               SizedBox(height: 50.h),
               BorderButtonWidgets(text: "Register"),
             ],

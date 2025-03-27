@@ -1,9 +1,10 @@
+import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DefaultButtonWidgets extends StatelessWidget {
-  const DefaultButtonWidgets({super.key, required this.text, this.onPressed});
+class CustomButtonWidgets extends StatelessWidget {
+  const CustomButtonWidgets({super.key, required this.text, this.onPressed});
   final String text;
   final Function()? onPressed;
 
@@ -14,9 +15,11 @@ class DefaultButtonWidgets extends StatelessWidget {
       width: double.infinity,
       child: MaterialButton(
         onPressed: onPressed,
-        color: Color(0xffFF6636),
+        color: AppColor.primaryColor,
         textColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.sp),
+        ),
         child: Text(text, style: AppTextStyle.poppins14BoldwhiteColor),
       ),
     );
