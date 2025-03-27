@@ -1,3 +1,4 @@
+import 'package:edunexus/feature/on_boarding/on_boarding.dart';
 import 'package:flutter/material.dart';
 
 class EduNeuxus extends StatelessWidget {
@@ -5,6 +6,9 @@ class EduNeuxus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: const HomeScreen());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const OnBoarding(),
+    );
   }
 }
