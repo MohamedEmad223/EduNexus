@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BorderButtonWidgets extends StatelessWidget {
-  const BorderButtonWidgets({super.key});
+  const BorderButtonWidgets({super.key, required this.text, this.onPressed});
+
+  final String text;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -12,14 +15,14 @@ class BorderButtonWidgets extends StatelessWidget {
       height: 55.h,
       width: double.infinity,
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: onPressed,
         color: Colors.white,
         textColor: AppColor.primaryColor,
         shape: RoundedRectangleBorder(
           side: BorderSide(color: AppColor.primaryColor, width: 2.5.w),
           borderRadius: BorderRadius.circular(30.r),
         ),
-        child: Text("Register", style: AppTextStyle.poppins14BoldprimaryColor),
+        child: Text(text, style: AppTextStyle.poppins14BoldprimaryColor),
       ),
     );
   }
