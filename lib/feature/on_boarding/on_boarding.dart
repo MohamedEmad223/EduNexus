@@ -1,5 +1,6 @@
 import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,11 +21,7 @@ class OnBoardingScreen extends StatelessWidget {
               Text(
                 "Find yourself by doing\n whatever you do",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: AppTextStyle.poppins20BoldblackColor,
               ),
               const SizedBox(height: 100),
               SizedBox(
@@ -37,7 +34,10 @@ class OnBoardingScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: const Text("Login"),
+                  child: Text(
+                    "Login",
+                    style: AppTextStyle.poppins14BoldwhiteColor,
+                  ),
                 ),
               ),
               const SizedBox(height: 50),
@@ -52,7 +52,10 @@ class OnBoardingScreen extends StatelessWidget {
                     side: BorderSide(color: AppColor.primaryColor, width: 2.5),
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: const Text("Register"),
+                  child: Text(
+                    "Register",
+                    style: AppTextStyle.poppins14BoldprimaryColor,
+                  ),
                 ),
               ),
             ],
