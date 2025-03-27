@@ -1,6 +1,7 @@
 import 'package:edunexus/core/routes/app_rotes.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EduNeuxus extends StatelessWidget {
   const EduNeuxus({super.key, required this.appRoutes});
@@ -8,10 +9,15 @@ class EduNeuxus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: appRoutes.generateRoute,
-      initialRoute: Routes.splash,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      ensureScreenSize: true,
+      
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: appRoutes.generateRoute,
+        initialRoute: Routes.splash,
+      ),
     );
   }
 }
