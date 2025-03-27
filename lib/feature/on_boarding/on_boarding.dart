@@ -1,4 +1,5 @@
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -46,9 +47,9 @@ class OnBoardingScreen extends StatelessWidget {
                 child: MaterialButton(
                   onPressed: () {},
                   color: Colors.white,
-                  textColor: Color(0xffFF6636),
+                  textColor: AppColor.primaryColor,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Color(0xffFF6636), width: 2.5),
+                    side: BorderSide(color: AppColor.primaryColor, width: 2.5),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: const Text("Register"),
