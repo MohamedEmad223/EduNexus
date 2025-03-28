@@ -2,6 +2,7 @@ import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/core/widgets/text_form_feild.dart';
+import 'package:edunexus/feature/auth/login/views/widgets/do_not_have_an_account.dart';
 import 'package:edunexus/feature/auth/login/views/widgets/lable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,6 +75,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              DoNotHaveAnAccount(),
             ],
           ),
         ),
