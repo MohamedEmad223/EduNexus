@@ -9,6 +9,7 @@ environment:
 
 
 dependencies:
+  flutter_launcher_icons: ^0.14.3
   flutter_svg: ^2.0.17
   flutter_native_splash: ^2.4.5
   google_fonts: ^6.2.1
@@ -23,7 +24,13 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^5.0.0
-
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/Vector (1).png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icons/Vector (1).png"
+  min_sdk_android: 21
 
 flutter:
 
@@ -33,6 +40,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/splash/
+    - assets/icons/
     - assets/images/onboarding/
     - assets/fonts/
 

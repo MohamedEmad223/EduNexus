@@ -6,4 +6,7 @@ class AppImages {
   /// Path to the onboarding image
   static const String onBoardingImage =
       'assets/images/onboarding/onBoarding.svg';
+
+  /// Path to the icon app
+  static const String iconApp = 'assets/icons/iconapp.png';
 }
