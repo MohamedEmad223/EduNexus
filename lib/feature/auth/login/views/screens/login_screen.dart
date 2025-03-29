@@ -75,7 +75,15 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              DoNotHaveAnAccount(),
+              DoNotHaveAnAccount(
+                text: "Register",
+                onPressed:
+                    () => Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/register',
+                      (route) => false,
+                    ),
+              ),
             ],
           ),
         ),
