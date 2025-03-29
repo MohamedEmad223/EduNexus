@@ -1,5 +1,6 @@
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
+import 'package:edunexus/feature/auth/register/view/screens/register_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const OnBoardingScreen());
       case Routes.login:
         return CustomPageRoute(builder: (context) => const LoginScreen());
+      case Routes.register:
+        return CustomPageRoute(builder: (context) => const RegisterScreen());
     }
     return null;
   }

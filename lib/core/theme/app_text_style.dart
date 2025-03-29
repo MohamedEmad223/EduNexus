@@ -33,4 +33,10 @@ class AppTextStyle {
     fontSize: 14.sp,
     fontWeight: FontWeight.bold,
   );
+
+  static TextStyle poppins36w600primaryColor = GoogleFonts.poppins(
+    color: AppColor.primaryColor,
+    fontSize: 36.sp,
+    fontWeight: FontWeight.w600,
+  );
 }

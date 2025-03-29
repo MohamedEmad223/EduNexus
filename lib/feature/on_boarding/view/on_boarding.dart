@@ -47,7 +47,16 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50.h),
-              BorderButtonWidgets(text: "Register", onPressed: () {}),
+              BorderButtonWidgets(
+                text: "Register",
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    Routes.register,
+                    (route) => false,
+                  );
+                },
+              ),
             ],
           ),
         ),
