@@ -20,11 +20,15 @@ class AppRoutes {
       case Routes.splash:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case Routes.onBoarding:
-        return MaterialPageRoute(builder: (context) => const OnBoardingScreen());
+        return MaterialPageRoute(
+          builder: (context) => const OnBoardingScreen(),
+        );
       case Routes.login:
         return CustomPageRoute(builder: (context) => const LoginScreen());
       case Routes.register:
         return CustomPageRoute(builder: (context) => const RegisterScreen());
+      case Routes.home:
+        return CustomPageRoute(builder: (context) => const LoginScreen());
     }
     return null;
   }
