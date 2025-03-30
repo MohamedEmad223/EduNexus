@@ -1,4 +1,5 @@
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/core/widgets/text_form_feild.dart';
@@ -63,7 +64,13 @@ class LoginScreen extends StatelessWidget {
                 height: 55.h,
                 width: double.infinity,
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      Routes.home,
+                      (route) => false,
+                    );
+                  },
                   color: AppColor.primaryColor,
                   textColor: Colors.white,
                   shape: RoundedRectangleBorder(
