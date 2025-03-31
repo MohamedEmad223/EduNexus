@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/helper/app_images.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -27,9 +26,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(child: Image.asset(AppImages.splashLogo)),
-      ),
+      backgroundColor: Colors.white,
+      body: SafeArea(child: Center(child: Image.asset(AppImages.splashLogo))),
     );
   }
 }
