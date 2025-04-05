@@ -21,4 +21,5 @@ class AppImages {
   static const String logOutIcon = 'assets/images/settings/logout.svg';
   static const String changePasswordIcon =
       'assets/images/settings/changepassword.svg';
+  static const String arrowIcon = 'assets/images/settings/arrow.svg';
 }

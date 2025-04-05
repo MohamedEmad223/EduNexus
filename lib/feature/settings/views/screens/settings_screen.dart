@@ -17,17 +17,37 @@ class SettingsScreen extends StatelessWidget {
         title: Text('Settings', style: AppTextStyle.poppins16w600primaryColor),
         centerTitle: true,
       ),
-      body: Column(children: [InformationContainerSettings(),Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 20.h),
-        child: Container(
-          color: AppColor.backGroundColor,
-          height: 65.h,
-          width: double.infinity  ,
-          child: Row(children: [
-            SvgPicture.asset(AppImages.personIcon),
-          ],),
-        ),
-      )]),
+      body: Column(
+        children: [
+          InformationContainerSettings(),
+          SizedBox(height: 50.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.h),
+            child: Container(
+              padding: EdgeInsets.all(20.w),
+              decoration: BoxDecoration(
+                color: AppColor.backGroundColor,
+                borderRadius: BorderRadius.circular(25.r),
+              ),
+
+              height: 65.h,
+              width: double.infinity,
+              child: Row(
+                children: [
+                  SvgPicture.asset(AppImages.editIcon),
+                  SizedBox(width: 10.w),
+                  Text(
+                    'Edit Profile',
+                    style: AppTextStyle.poppins14w300threedBlackColor,
+                  ),
+                  Spacer(),
+                  SvgPicture.asset(AppImages.arrowIcon),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
