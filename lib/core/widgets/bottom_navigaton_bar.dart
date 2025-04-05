@@ -18,7 +18,7 @@ class BottomNavBar extends StatelessWidget {
       controller: PersistentTabController(initialIndex: 0),
       screens: _buildScreens(),
       items: _buildNavBarsItems(),
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: AppColor.backGroundColor,
       navBarStyle: NavBarStyle.style1,
     );
   }

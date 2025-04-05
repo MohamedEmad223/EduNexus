@@ -10,9 +10,9 @@ class ListViewCategoriesWidgets extends StatelessWidget {
     return SizedBox(
       height: 60.h,
       child: ListView.builder(
-        itemCount: 5,
+        itemCount: 7,
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(

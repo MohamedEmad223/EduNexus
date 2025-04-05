@@ -30,6 +30,10 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               ListViewCategoriesWidgets(),
+              SizedBox(height: 20.h),
+              Text('Top Courses', style: AppTextStyle.poppins20BoldblackColor),
+              // TODO: i will add courses card here when they finidh designed them
+
             ],
           ),
         ),
