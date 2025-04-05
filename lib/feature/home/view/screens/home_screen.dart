@@ -1,3 +1,4 @@
+import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,10 +39,13 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(25.r),
                     ),
-                    child: const Icon(Icons.person),
+                    child: Image.asset(AppImages.personIcon),
                   ),
                 ],
               ),
+
+              SizedBox(height: 50.h),
+              Image.asset(AppImages.learn),
             ],
           ),
         ),

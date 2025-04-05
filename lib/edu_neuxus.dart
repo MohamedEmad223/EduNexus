@@ -21,11 +21,8 @@ class EduNeuxus extends StatelessWidget {
             color: Colors.white,
             surfaceTintColor: Colors.white,
             scrolledUnderElevation: 0,
-            iconTheme: IconThemeData(
-              color: AppColor.scaffoldBackgroundColor,
-              size: 28.r,
-            ),
-          ),),
+          ),
+        ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRoutes.generateRoute,
         initialRoute: Routes.botNavBar,

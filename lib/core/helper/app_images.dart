@@ -9,4 +9,8 @@ class AppImages {
 
   /// Path to the icon app
   static const String iconApp = 'assets/icons/iconapp.png';
+
+  /// Path to the home app
+  static const String personIcon = 'assets/images/home/Group 1.png';
+  static const String learn = 'assets/images/home/learn.png';
 }
