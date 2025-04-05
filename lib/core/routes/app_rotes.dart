@@ -6,7 +6,7 @@ import 'package:edunexus/feature/cart/cart_screen.dart';
 import 'package:edunexus/feature/chat/chat_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
-import 'package:edunexus/feature/profile/profile_screen.dart';
+import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -34,8 +34,8 @@ class AppRoutes {
         return CustomPageRoute(builder: (context) => const RegisterScreen());
       case Routes.home:
         return CustomPageRoute(builder: (context) => const HomeScreen());
-      case Routes.profile:
-        return CustomPageRoute(builder: (context) => const ProfileScreen());
+      case Routes.settings:
+        return CustomPageRoute(builder: (context) => const SettingsScreen());
       case Routes.cart:
         return CustomPageRoute(builder: (context) => const CartScreen());
       case Routes.chatbot:

@@ -16,11 +16,25 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
   );
 
+    static TextStyle poppins16w600primaryColor = GoogleFonts.poppins(
+    color: AppColor.primaryColor,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
+
     static TextStyle poppins14w300blackColor = GoogleFonts.poppins(
     color: AppColor.blackColor,
     fontSize: 14.sp,
     fontWeight: FontWeight.w300,
   );
+
+  static TextStyle poppins14w300threedBlackColor = GoogleFonts.poppins(
+    color: AppColor.threedBlackColor,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  
 
   static TextStyle poppins14BoldwhiteColor = GoogleFonts.poppins(
     color: AppColor.whiteColor,
