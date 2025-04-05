@@ -16,6 +16,12 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
   );
 
+    static TextStyle poppins14w300blackColor = GoogleFonts.poppins(
+    color: AppColor.blackColor,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w300,
+  );
+
   static TextStyle poppins14BoldwhiteColor = GoogleFonts.poppins(
     color: AppColor.whiteColor,
     fontSize: 14.sp,
