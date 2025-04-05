@@ -18,13 +18,7 @@ class BottomNavBar extends StatelessWidget {
       controller: PersistentTabController(initialIndex: 0),
       screens: _buildScreens(),
       items: _buildNavBarsItems(),
-      backgroundColor: AppColor.whiteColor,
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25.r),
-          topRight: Radius.circular(25.r),
-        ),
-      ),
+      backgroundColor: AppColor.backGroundColor,
       navBarStyle: NavBarStyle.style1,
     );
   }
@@ -56,5 +50,6 @@ PersistentBottomNavBarItem _buildNavBarItem(IconData icon, String label) {
     inactiveColorPrimary: Colors.grey,
     title: label,
     iconSize: 15.w,
+    activeColorPrimary: AppColor.primaryColor,
   );
 }
