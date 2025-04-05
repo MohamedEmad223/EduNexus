@@ -12,11 +12,11 @@ class EduNeuxus extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       ensureScreenSize: true,
-      
+
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRoutes.generateRoute,
-        initialRoute: Routes.splash,
+        initialRoute: Routes.botNavBar,
       ),
     );
   }
