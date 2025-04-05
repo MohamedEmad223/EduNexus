@@ -1,6 +1,5 @@
 import 'package:edunexus/core/routes/app_rotes.dart';
 import 'package:edunexus/core/routes/routes.dart';
-import 'package:edunexus/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
