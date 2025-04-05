@@ -1,6 +1,8 @@
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/home/view/widgets/information_of_user_widget.dart';
+import 'package:edunexus/feature/home/view/widgets/list_view_categories_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.backGroundColor,
 
       body: SafeArea(
         child: Padding(
@@ -26,6 +28,8 @@ class HomeScreen extends StatelessWidget {
                 'Top Categories',
                 style: AppTextStyle.poppins20BoldblackColor,
               ),
+              SizedBox(height: 20.h),
+              ListViewCategoriesWidgets(),
             ],
           ),
         ),
