@@ -13,4 +13,12 @@ class AppImages {
   /// Path to the home app
   static const String personIcon = 'assets/images/home/Group 1.png';
   static const String learn = 'assets/images/home/learn.png';
+
+  static const String editIcon = 'assets/images/settings/edit.svg';
+  static const String coursesHistoryIcon =
+      'assets/images/settings/courseshistory.svg';
+  static const String coursesIcon = 'assets/images/settings/courses.svg';
+  static const String logOutIcon = 'assets/images/settings/logout.svg';
+  static const String changePasswordIcon =
+      'assets/images/settings/changepassword.svg';
 }

@@ -6,7 +6,7 @@ import 'package:edunexus/feature/cart/cart_screen.dart';
 import 'package:edunexus/feature/chat/chat_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
-import 'package:edunexus/feature/settings/views/screens/profile_screen.dart';
+import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 

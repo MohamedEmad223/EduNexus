@@ -2,7 +2,7 @@ import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/feature/cart/cart_screen.dart';
 import 'package:edunexus/feature/chat/chat_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
-import 'package:edunexus/feature/settings/views/screens/profile_screen.dart';
+import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
 import 'package:edunexus/feature/videos/videos_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
