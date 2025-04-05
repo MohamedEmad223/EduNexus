@@ -2,7 +2,7 @@ import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/feature/cart/cart_screen.dart';
 import 'package:edunexus/feature/chat/chat_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
-import 'package:edunexus/feature/profile/profile_screen.dart';
+import 'package:edunexus/feature/settings/views/screens/profile_screen.dart';
 import 'package:edunexus/feature/videos/videos_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +29,7 @@ List<Widget> _buildScreens() {
     HomeScreen(),
     CartScreen(),
     VideosScreen(),
-    ProfileScreen(),
+    SettingsScreen(),
     ChatScreen(),
   ];
 }
@@ -39,7 +39,7 @@ List<PersistentBottomNavBarItem> _buildNavBarsItems() {
     _buildNavBarItem(Icons.home, 'Home'),
     _buildNavBarItem(Icons.category_rounded, 'Cart'),
     _buildNavBarItem(Icons.video_call, 'Videos'),
-    _buildNavBarItem(Icons.card_giftcard, "profile"),
+    _buildNavBarItem(Icons.settings, "profile"),
     _buildNavBarItem(Icons.chat_bubble, 'chatBot'),
   ];
 }
