@@ -9,4 +9,5 @@ class Routes {
   static const String cart = '/cart';
   static const String chatbot = '/chatbot';
   static const String video = '/video';
+  static const String course = '/course';
 }
