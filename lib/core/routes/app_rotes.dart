@@ -4,6 +4,7 @@ import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
 import 'package:edunexus/feature/auth/register/view/screens/register_screen.dart';
 import 'package:edunexus/feature/cart/cart_screen.dart';
 import 'package:edunexus/feature/chat/chat_screen.dart';
+import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
 import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
@@ -42,6 +43,8 @@ class AppRoutes {
         return CustomPageRoute(builder: (context) => const ChatScreen());
       case Routes.botNavBar:
         return CustomPageRoute(builder: (context) => const BottomNavBar());
+      case Routes.video:
+        return CustomPageRoute(builder: (context) => const CoursesScreen());
     }
     return null;
   }
