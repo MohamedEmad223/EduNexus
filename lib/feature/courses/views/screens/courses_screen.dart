@@ -1,5 +1,6 @@
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/courses/views/widgets/course_container_widgets.dart';
 import 'package:edunexus/feature/courses/views/widgets/learned_today_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,8 +24,25 @@ class CoursesScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LearnedTodayContainer()
+            LearnedTodayContainer(),
+            SizedBox(height: 20.h),
+
+            Expanded(
+              child: GridView.builder(
+                itemCount: 4,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 100.w / 120.h,
+                  crossAxisSpacing: 16.w,
+                  mainAxisSpacing: 15.h,
+                ),
+                itemBuilder: (context, index) {
+                  return const CourseContainerWidgets();
+                },
+              ),
+            ),
           ],
         ),
       ),

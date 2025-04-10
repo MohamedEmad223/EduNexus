@@ -43,7 +43,7 @@ class AppRoutes {
         return CustomPageRoute(builder: (context) => const ChatScreen());
       case Routes.botNavBar:
         return CustomPageRoute(builder: (context) => const BottomNavBar());
-      case Routes.video:
+      case Routes.course:
         return CustomPageRoute(builder: (context) => const CoursesScreen());
     }
     return null;
