@@ -23,36 +23,55 @@ class CourseContainerWidgets extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            Text(
-              'JavaScript for Beginners',
-              style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'JavaScript for Beginners',
+                  style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                LinearProgressIndicator(
+                  value: 0.5,
+                  backgroundColor: AppColor.whiteColor,
+                  color: AppColor.pinkColor,
+                  minHeight: 5.h,
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                SizedBox(height: 10.h),
+                Text(
+                  'Completed',
+                  style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp,
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                Text(
+                  '14/24',
+                  style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20.sp,
+                  ),
+                ),
+              ],
             ),
-            SizedBox(height: 10.h),
-            LinearProgressIndicator(
-              value: 0.5,
-              backgroundColor: AppColor.whiteColor,
-              color: AppColor.pinkColor,
-              minHeight: 5.h,
-            ),
-            SizedBox(height: 10.h),
-            Text(
-              'Completed',
-              style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
-                fontWeight: FontWeight.w400,
-                fontSize: 12.sp,
-              ),
-            ),
-            SizedBox(height: 10.h),
-            Text(
-              '14/24',
-              style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
-                fontWeight: FontWeight.w700,
-                fontSize: 20.sp,
+
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: CircleAvatar(
+                radius: 20.r,
+                backgroundColor: AppColor.whiteColor,
+                child: Icon(
+                  Icons.play_arrow,
+                  color: AppColor.primaryColor,
+                  size: 30.sp,
+                ),
               ),
             ),
           ],

@@ -49,6 +49,7 @@ class LearnedTodayContainer extends StatelessWidget {
               backgroundColor: AppColor.lightGreyColor,
               color: AppColor.primaryColor,
               minHeight: 5.h,
+              borderRadius: BorderRadius.circular(10.r),
             ),
           ],
         ),
