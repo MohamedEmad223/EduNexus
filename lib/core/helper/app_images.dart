@@ -49,4 +49,6 @@ class AppImages {
   /// oath of notification screen
   static const String notificationIcon =
       'assets/images/notifications/notification.png';
+  static const String bankCard = 'assets/images/notifications/bank-card.png';
+  static const String timeIcon = 'assets/images/notifications/Subtract.png';
 }
