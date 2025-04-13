@@ -1,5 +1,6 @@
 import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
 import 'package:edunexus/feature/settings/views/widgets/edit_row_widget.dart';
 import 'package:edunexus/feature/settings/views/widgets/information_container_settings.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,16 @@ class SettingsScreen extends StatelessWidget {
         children: [
           InformationContainerSettings(),
           SizedBox(height: 50.h),
-          EditRowWidget(text: 'Edit Profile', imagePath: AppImages.editIcon),
+          EditRowWidget(
+            text: 'Edit Profile',
+            imagePath: AppImages.editIcon,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditProfileScreen()),
+              );
+            },
+          ),
           SizedBox(height: 20.h),
           EditRowWidget(
             text: 'Courses History',
