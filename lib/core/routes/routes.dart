@@ -10,4 +10,5 @@ class Routes {
   static const String chatbot = '/chatbot';
   static const String video = '/video';
   static const String course = '/course';
+  static const String courseDetails = '/courseDetails';
 }
