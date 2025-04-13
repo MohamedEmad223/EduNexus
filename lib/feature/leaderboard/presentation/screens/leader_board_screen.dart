@@ -12,7 +12,13 @@ class LeaderBoardScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Text('data'),
+      body: Row(children: [Column(
+        children: [
+          CircleAvatar(
+            child: Image.asset(),
+          )
+        ],
+      ), Column(), Column()]),
     );
   }
 }
