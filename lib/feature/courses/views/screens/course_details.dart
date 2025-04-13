@@ -1,4 +1,5 @@
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/views/widgets/add_to_cart_widgets.dart';
 import 'package:edunexus/feature/courses/views/widgets/row_course_details_widgets.dart';
@@ -18,6 +19,8 @@ class CourseDetails extends StatelessWidget {
             // Main content layout
             Column(
               children: [
+                // AppBar with back button
+
                 // Image part
                 Image.asset(
                   AppImages.courseDetails,
@@ -26,6 +29,15 @@ class CourseDetails extends StatelessWidget {
                   height: 300.h,
                 ),
               ],
+            ),
+
+            Positioned(
+              child: IconButton(
+                icon: Icon(Icons.arrow_back, color: AppColor.whiteColor),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
 
             // Floating container above bottom of the image
