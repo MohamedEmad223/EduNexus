@@ -9,6 +9,7 @@ import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
+import 'package:edunexus/feature/result/presentation/screens/result_screen.dart';
 import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,8 @@ class AppRoutes {
         return CustomPageRoute(builder: (context) => const CourseDetails());
       case Routes.leaderBoard:
         return CustomPageRoute(builder: (context) => const LeaderBoardScreen());
+      case Routes.resultScreen:
+        return CustomPageRoute(builder: (context) => const ResultScreen());
     }
     return null;
   }

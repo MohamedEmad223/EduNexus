@@ -12,4 +12,5 @@ class Routes {
   static const String course = '/course';
   static const String courseDetails = '/courseDetails';
   static const String leaderBoard = '/leaderBoard';
+  static const String resultScreen = '/resultScreen';
 }
