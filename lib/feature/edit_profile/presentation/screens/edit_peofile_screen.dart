@@ -1,3 +1,4 @@
+import 'package:edunexus/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class EditProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Edit Profile'),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColor.backGroundColor,
       ),
       body: SafeArea(
         child: Padding(
