@@ -28,4 +28,12 @@ class AppImages {
   static const String courseDetails = 'assets/images/home/coursedetails.png';
   static const String doneIcone = 'assets/images/home/icon-done.png';
   static const String lockIcon = 'assets/images/home/lock.png';
+
+  /// path of leaderboard image
+  static const String oneleaderBoardImage =
+      'assets/images/leaderboard/one.jpeg';
+  static const String twoleaderBoardImage = 'assets/images/leaderboard/two.png';
+  static const String threeleaderBoardImage =
+      'assets/images/leaderboard/three.png';
+  static const String crownIcone = 'assets/images/leaderboard/Vector.png';
 }

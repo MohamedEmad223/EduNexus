@@ -11,4 +11,5 @@ class Routes {
   static const String video = '/video';
   static const String course = '/course';
   static const String courseDetails = '/courseDetails';
+  static const String leaderBoard = '/leaderBoard';
 }
