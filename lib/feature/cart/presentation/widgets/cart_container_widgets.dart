@@ -12,16 +12,32 @@ class CartContainerWidgets extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 116.h,
-      color: AppColor.whiteColor,
+      decoration: BoxDecoration(
+        color: AppColor.whiteColor,
+        borderRadius: BorderRadius.circular(5.r),
+        boxShadow: [
+          BoxShadow(
+            color: AppColor.lightBlackColor.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(2, 0),
+          ),
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Column(
             children: [
-              Image.asset(
-                AppImages.cartImage,
-                height: 116.h,
-                fit: BoxFit.cover,
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(5.r),
+                  bottomLeft: Radius.circular(5.r),
+                ),
+                child: Image.asset(
+                  AppImages.cartImage,
+                  height: 116.h,
+                  fit: BoxFit.fill,
+                ),
               ),
             ],
           ),
