@@ -20,23 +20,26 @@ class EditRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.h),
-      child: Container(
-        padding: EdgeInsets.all(20.w),
-        decoration: BoxDecoration(
-          color: AppColor.backGroundColor,
-          borderRadius: BorderRadius.circular(25.r),
-        ),
-
-        height: 65.h,
-        width: double.infinity,
-        child: Row(
-          children: [
-            SvgPicture.asset(imagePath ?? 'error in path'),
-            SizedBox(width: 10.w),
-            Text(text, style: AppTextStyle.poppins14w300threedBlackColor),
-            Spacer(),
-            SvgPicture.asset(AppImages.arrowIcon),
-          ],
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          padding: EdgeInsets.all(20.w),
+          decoration: BoxDecoration(
+            color: AppColor.backGroundColor,
+            borderRadius: BorderRadius.circular(25.r),
+          ),
+        
+          height: 65.h,
+          width: double.infinity,
+          child: Row(
+            children: [
+              SvgPicture.asset(imagePath ?? 'error in path'),
+              SizedBox(width: 10.w),
+              Text(text, style: AppTextStyle.poppins14w300threedBlackColor),
+              Spacer(),
+              SvgPicture.asset(AppImages.arrowIcon),
+            ],
+          ),
         ),
       ),
     );
