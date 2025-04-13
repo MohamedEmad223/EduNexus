@@ -1,5 +1,5 @@
 import 'package:edunexus/core/theme/app_color.dart';
-import 'package:edunexus/feature/cart/cart_screen.dart';
+import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
 import 'package:edunexus/feature/chat/chat_screen.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';

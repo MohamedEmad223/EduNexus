@@ -22,4 +22,6 @@ class AppImages {
   static const String changePasswordIcon =
       'assets/images/settings/changepassword.svg';
   static const String arrowIcon = 'assets/images/settings/arrow.svg';
+  /// Path to the cart icon
+  static const String cartImage = 'assets/images/cart/cart.png';
 }
