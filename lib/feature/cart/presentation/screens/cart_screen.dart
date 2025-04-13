@@ -18,10 +18,11 @@ class CartScreen extends StatelessWidget {
               width: double.infinity,
               height: 116.h,
               color: AppColor.primaryColor,
-              child: Row(children: [Column(children: [
-        Image.asset(AppImages.)
-                    ],
-                  )]),
+              child: Row(
+                children: [
+                  Column(children: [Image.asset(AppImages.cartImage)]),
+                ],
+              ),
             ),
           ],
         ),
