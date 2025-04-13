@@ -1,5 +1,8 @@
 import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/edit_profile/presentation/widgets/image_container_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -7,35 +10,19 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.backGroundColor,
       appBar: AppBar(
-        title: const Text('Edit Profile'),
+        title: Text(
+          'Edit Profile',
+          style: AppTextStyle.poppins16w600primaryColor,
+        ),
         centerTitle: true,
         backgroundColor: AppColor.backGroundColor,
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('Name'),
-              const TextField(),
-              const SizedBox(height: 20),
-              const Text('Email'),
-              const TextField(),
-              const SizedBox(height: 20),
-              const Text('Phone Number'),
-              const TextField(),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // Handle save action
-                },
-                child: const Text('Save Changes'),
-              ),
-            ],
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 50.h),
+          child: Column(children: [ImageContainerWidgets()]),
         ),
       ),
     );
