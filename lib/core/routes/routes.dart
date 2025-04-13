@@ -14,4 +14,5 @@ class Routes {
   static const String leaderBoard = '/leaderBoard';
   static const String resultScreen = '/resultScreen';
   static const String editProfileScreen = '/editProfileScreen';
+  static const String notificationScreen = '/notificationScreen';
 }

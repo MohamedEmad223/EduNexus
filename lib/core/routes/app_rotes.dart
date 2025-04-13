@@ -8,6 +8,7 @@ import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
+import 'package:edunexus/feature/notification/presentation/screens/notificatios_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
 import 'package:edunexus/feature/result/presentation/screens/result_screen.dart';
 import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
@@ -52,6 +53,8 @@ class AppRoutes {
         return CustomPageRoute(builder: (context) => const LeaderBoardScreen());
       case Routes.resultScreen:
         return CustomPageRoute(builder: (context) => const ResultScreen());
+      case Routes.notificationScreen:
+        return CustomPageRoute(builder: (context) => const NotificatiosScreen());
       case Routes.editProfileScreen:
         return CustomPageRoute(builder: (context) => const EditProfileScreen());
     }
