@@ -36,4 +36,8 @@ class AppImages {
   static const String threeleaderBoardImage =
       'assets/images/leaderboard/three.png';
   static const String crownIcone = 'assets/images/leaderboard/Vector.png';
+  /// path of result screen
+  static const String resultScreen = 'assets/images/result/result.png';
+  static const String icon = 'assets/images/result/icons.png';
+  static const String correctIcon = 'assets/images/result/correct.png';
 }

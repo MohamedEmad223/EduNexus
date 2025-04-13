@@ -47,6 +47,7 @@ flutter:
     - assets/images/home/
     - assets/images/cart/
     - assets/images/leaderboard/
+    - assets/images/result/
     - assets/images/settings/
     - assets/fonts/
 
