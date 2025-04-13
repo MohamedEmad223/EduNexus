@@ -6,9 +6,17 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Result'), centerTitle: true),
-      body: Center(
-        child: Text('Your result is ready!', style: TextStyle(fontSize: 24)),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                'Your result is ready!',
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
