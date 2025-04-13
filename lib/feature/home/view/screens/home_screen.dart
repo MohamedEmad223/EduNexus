@@ -8,6 +8,7 @@ import 'package:edunexus/feature/home/view/widgets/list_view_categories_widgets.
 import 'package:edunexus/feature/notification/presentation/screens/notificatios_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -64,11 +65,12 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GrideViewCousre(
                       onPressed: () {
-                        Navigator.push(
+                        PersistentNavBarNavigator.pushNewScreen(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => CourseDetails(),
-                          ),
+                          screen: CourseDetails(), // your target screen
+                          withNavBar: false, // 👈 this hides the bottom nav bar
+                          pageTransitionAnimation:
+                              PageTransitionAnimation.cupertino, // optional
                         );
                       },
                     );
