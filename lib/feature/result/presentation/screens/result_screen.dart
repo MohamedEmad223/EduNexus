@@ -52,6 +52,23 @@ class ResultScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: 150.h),
+              SizedBox(
+                height: 55.h,
+                width: double.infinity,
+                child: MaterialButton(
+                  onPressed: () {},
+                  color: AppColor.primaryColor,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.sp),
+                  ),
+                  child: Text(
+                    "Continue",
+                    style: AppTextStyle.poppins14BoldwhiteColor,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
