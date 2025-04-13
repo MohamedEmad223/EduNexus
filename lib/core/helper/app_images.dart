@@ -45,4 +45,8 @@ class AppImages {
   /// path of edit profile screen
   static const String editProfile =
       'assets/images/edit_profile/editprofile.png';
+
+  /// oath of notification screen
+  static const String notificationIcon =
+      'assets/images/notifications/notification.png';
 }
