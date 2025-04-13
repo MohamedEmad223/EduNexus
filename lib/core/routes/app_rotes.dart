@@ -7,6 +7,7 @@ import 'package:edunexus/feature/chat/chat_screen.dart';
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
+import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
 import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
@@ -47,9 +48,9 @@ class AppRoutes {
       case Routes.course:
         return CustomPageRoute(builder: (context) => const CoursesScreen());
       case Routes.courseDetails:
-        return CustomPageRoute(
-          builder: (context) => const CourseDetails(),
-        );
+        return CustomPageRoute(builder: (context) => const CourseDetails());
+      case Routes.leaderBoard:
+        return CustomPageRoute(builder: (context) => const LeaderBoardScreen());
     }
     return null;
   }
