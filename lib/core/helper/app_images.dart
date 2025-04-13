@@ -27,4 +27,5 @@ class AppImages {
   static const String cartImage = 'assets/images/cart/cart.png';
   static const String courseDetails = 'assets/images/home/coursedetails.png';
   static const String doneIcone = 'assets/images/home/icon-done.png';
+  static const String lockIcon = 'assets/images/home/lock.png';
 }
