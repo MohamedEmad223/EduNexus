@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class EditPeofileScreen extends StatelessWidget {
-  const EditPeofileScreen({super.key});
+class EditProfileScreen extends StatelessWidget {
+  const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
