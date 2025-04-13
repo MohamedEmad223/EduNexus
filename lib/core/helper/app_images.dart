@@ -35,4 +35,5 @@ class AppImages {
   static const String twoleaderBoardImage = 'assets/images/leaderboard/two.png';
   static const String threeleaderBoardImage =
       'assets/images/leaderboard/three.png';
+  static const String crownIcone = 'assets/images/leaderboard/Vector.png';
 }
