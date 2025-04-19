@@ -10,6 +10,7 @@ import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
 import 'package:edunexus/feature/notification/presentation/screens/notificatios_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
+import 'package:edunexus/feature/questions/views/screens/questions_screen.dart';
 import 'package:edunexus/feature/result/presentation/screens/result_screen.dart';
 import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
@@ -57,6 +58,8 @@ class AppRoutes {
         return CustomPageRoute(builder: (context) => const NotificatiosScreen());
       case Routes.editProfileScreen:
         return CustomPageRoute(builder: (context) => const EditProfileScreen());
+      case Routes.questoinScreen:
+        return CustomPageRoute(builder: (context) => const QuestionsScreen(),);
     }
     return null;
   }
