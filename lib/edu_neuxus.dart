@@ -12,7 +12,6 @@ class EduNeuxus extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       ensureScreenSize: true,
-
       child: MaterialApp(
         theme: ThemeData(
           appBarTheme: AppBarTheme(
