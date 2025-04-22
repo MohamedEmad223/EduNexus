@@ -49,6 +49,9 @@ class AppImages {
   /// path of question screen
   static const String cancelIcone = 'assets/icons/cancel.svg';
 
+  /// path of course screen
+  static const String fileIcone = 'assets/icons/FileText.svg';
+
   /// oath of notification screen
   static const String notificationIcon =
       'assets/images/notifications/notification.png';

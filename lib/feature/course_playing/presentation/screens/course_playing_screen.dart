@@ -1,6 +1,6 @@
 import 'package:edunexus/core/theme/app_color.dart';
-import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/content_widgets.dart';
+import 'package:edunexus/feature/course_playing/presentation/widgets/material_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/video_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,25 +30,7 @@ class CoursePlayingScreen extends StatelessWidget {
               child: TabBarView(
                 children: [
                   ContentWidgets(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15.w,
-                      vertical: 10.h,
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Product Design v1.0',
-                              style: AppTextStyle.poppins20BoldblackColor,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  MaterialWidgets(),
                   Center(
                     child: Text('Discussion', style: TextStyle(fontSize: 20)),
                   ),
