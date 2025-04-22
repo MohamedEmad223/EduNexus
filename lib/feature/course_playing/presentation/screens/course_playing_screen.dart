@@ -1,3 +1,5 @@
+import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/feature/course_playing/presentation/widgets/video_widget.dart';
 import 'package:flutter/material.dart';
 
 class CoursePlayingScreen extends StatelessWidget {
@@ -6,17 +8,18 @@ class CoursePlayingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.scaffoldBackgroundColor,
+
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: const Text('Course Playing'),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColor.scaffoldBackgroundColor,
       ),
-      body: Center(
-        child: Text(
-          'Course Playing Screen',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
+      body: Column(children: [VideoWidget()]),
     );
   }
 }
