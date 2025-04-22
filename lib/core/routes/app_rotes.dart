@@ -3,6 +3,7 @@ import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
 import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
 import 'package:edunexus/feature/auth/register/view/screens/register_screen.dart';
 import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
+import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
@@ -70,6 +71,8 @@ class AppRoutes {
                 child: const QuestionsScreen(),
               ),
         );
+      case Routes.chatScreen:
+        return CustomPageRoute(builder: (context) => const ChatScreen());
     }
     return null;
   }
