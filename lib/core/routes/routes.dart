@@ -15,4 +15,5 @@ class Routes {
   static const String resultScreen = '/resultScreen';
   static const String editProfileScreen = '/editProfileScreen';
   static const String notificationScreen = '/notificationScreen';
+  static const String questoinScreen = '/questionScreen';
 }
