@@ -10,11 +10,13 @@ import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
 import 'package:edunexus/feature/notification/presentation/screens/notificatios_screen.dart';
 import 'package:edunexus/feature/on_boarding/view/on_boarding.dart';
+import 'package:edunexus/feature/questions/cubit/cubit/quiz_cubit.dart';
 import 'package:edunexus/feature/questions/presentation/screens/questions_screen.dart';
 import 'package:edunexus/feature/result/presentation/screens/result_screen.dart';
 import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
 import 'package:edunexus/feature/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomPageRoute extends MaterialPageRoute {
   CustomPageRoute({required super.builder});
@@ -61,7 +63,13 @@ class AppRoutes {
       case Routes.editProfileScreen:
         return CustomPageRoute(builder: (context) => const EditProfileScreen());
       case Routes.questoinScreen:
-        return CustomPageRoute(builder: (context) => const QuestionsScreen());
+        return CustomPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (context) => QuizCubit(),
+                child: const QuestionsScreen(),
+              ),
+        );
     }
     return null;
   }
