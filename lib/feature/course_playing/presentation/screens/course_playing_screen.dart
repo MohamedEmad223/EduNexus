@@ -1,9 +1,10 @@
+import 'package:edunexus/feature/course_playing/presentation/widgets/disscussion.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/content_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/material_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/video_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CoursePlayingScreen extends StatelessWidget {
   const CoursePlayingScreen({super.key});
@@ -14,29 +15,34 @@ class CoursePlayingScreen extends StatelessWidget {
       length: 3,
       child: Scaffold(
         backgroundColor: AppColor.scaffoldBackgroundColor,
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
-          ),
-          title: const Text('Course Playing'),
-          centerTitle: true,
-          backgroundColor: AppColor.scaffoldBackgroundColor,
-        ),
         body: Column(
           children: [
-            const VideoWidget(),
+            Stack(
+              children: [
+                const VideoWidget(),
+                Positioned(
+                  top: 40.h, // adjust based on your UI needs
+                  left: 15.w,
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                        shape: BoxShape.circle,
+                      ),
+                      padding: EdgeInsets.all(8.w),
+                      child: const Icon(Icons.arrow_back, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Expanded(
               child: TabBarView(
                 children: [
                   const ContentWidgets(),
                   Center(child: MaterialWidgets()),
-                  Center(
-                    child: Text(
-                      'Discussion',
-                      style: TextStyle(fontSize: 20.sp),
-                    ),
-                  ),
+                  const Disscussion(),
                 ],
               ),
             ),
