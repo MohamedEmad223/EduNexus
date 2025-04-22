@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnswerContainerWidgets extends StatelessWidget {
-  const AnswerContainerWidgets({
+  AnswerContainerWidgets({
     super.key,
     required this.answerText,
     required this.answerOption,
   });
+
+ 
 
   final String answerText;
   final String answerOption;
@@ -42,7 +44,6 @@ class AnswerContainerWidgets extends StatelessWidget {
           ),
           SizedBox(width: 10.w),
           Text(answerText, style: AppTextStyle.poppins16w400blackColor),
-          
         ],
       ),
     );
