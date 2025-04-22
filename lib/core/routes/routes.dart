@@ -7,7 +7,6 @@ class Routes {
   static const String home = '/home';
   static const String settings = '/settings';
   static const String cart = '/cart';
-  static const String chatbot = '/chatbot';
   static const String video = '/video';
   static const String course = '/course';
   static const String courseDetails = '/courseDetails';

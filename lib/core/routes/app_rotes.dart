@@ -71,7 +71,7 @@ class AppRoutes {
                 child: const QuestionsScreen(),
               ),
         );
-      case Routes.chatbot:
+      case Routes.chatScreen:
         return CustomPageRoute(builder: (context) => const ChatScreen());
     }
     return null;
