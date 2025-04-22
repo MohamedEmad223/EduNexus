@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
+  const ResultScreen({super.key, this.score, this.totalQuestions});
+
+  final int? score;
+  final int? totalQuestions;
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +44,13 @@ class ResultScreen extends StatelessWidget {
                     RowOfScoreWidgets(
                       iconImage: AppImages.icon,
                       scoreText: 'SCORE GAINED',
-                      scoreValue: '100',
+                      scoreValue:score.toString(),
                     ),
                     Divider(color: AppColor.lightGreyColor, thickness: 1.h),
                     RowOfScoreWidgets(
                       iconImage: AppImages.correctIcon,
                       scoreText: 'CORRECT ANSWERS',
-                      scoreValue: '4',
+                      scoreValue: totalQuestions.toString(),
                     ),
                   ],
                 ),

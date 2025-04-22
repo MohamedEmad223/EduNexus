@@ -1,10 +1,12 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
-  QuizCubit() : super(QuizInitial());
+  QuizCubit() : super(QuizInitial()) {
+    // Initialize selectedAnswers with null for each question
+    selectedAnswers = List.filled(quizData.length, null);
+  }
 
   final List<Map<String, dynamic>> quizData = [
     {
@@ -62,8 +64,24 @@ class QuizCubit extends Cubit<QuizState> {
   ];
 
   int currentIndex = 0;
+  late List<String?> selectedAnswers; // Store user answers (A, B, C, D, or null)
 
   int get totalQuestions => quizData.length;
+
+  void selectAnswer(String answer) {
+    selectedAnswers[currentIndex] = answer;
+    emit(QuizAnswerSelected(answer));
+  }
+
+  int getScore() {
+    int score = 0;
+    for (int i = 0; i < quizData.length; i++) {
+      if (selectedAnswers[i] == quizData[i]['answer']) {
+        score++;
+      }
+    }
+    return score;
+  }
 
   void nextQuestion() {
     if (currentIndex < totalQuestions - 1) {
@@ -83,6 +101,7 @@ class QuizCubit extends Cubit<QuizState> {
 
   void restartQuiz() {
     currentIndex = 0;
+    selectedAnswers = List.filled(quizData.length, null); // Reset answers
     emit(QuizQuestionChanged(currentIndex));
   }
 }

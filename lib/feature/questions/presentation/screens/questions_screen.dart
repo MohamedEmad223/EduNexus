@@ -1,82 +1,58 @@
-import 'package:edunexus/core/helper/app_images.dart';
+
 import 'package:edunexus/core/theme/app_color.dart';
-import 'package:edunexus/core/theme/app_text_style.dart';
-import 'package:edunexus/feature/questions/presentation/widgets/answer_container_widgets.dart';
+import 'package:edunexus/feature/questions/cubit/cubit/quiz_cubit.dart';
+import 'package:edunexus/feature/questions/presentation/widgets/quiz_header.dart';
+import 'package:edunexus/feature/questions/presentation/widgets/quiz_navigation_buttons.dart';
+import 'package:edunexus/feature/questions/presentation/widgets/quiz_progress_bar.dart';
+import 'package:edunexus/feature/questions/presentation/widgets/quiz_question_section.dart' show QuizQuestionSection;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class QuestionsScreen extends StatelessWidget {
   const QuestionsScreen({super.key});
 
+  static const double _horizontalPadding = 15.0;
+  static const double _verticalSpacing = 50.0;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.secondaryColor,
+    return BlocBuilder<QuizCubit, QuizState>(
+      builder: (context, state) {
+        final cubit = context.read<QuizCubit>();
+        final index = cubit.currentIndex;
+        final total = cubit.totalQuestions;
+        final questionData = cubit.quizData[index];
 
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return Scaffold(
+          backgroundColor: AppColor.secondaryColor,
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: _horizontalPadding.w),
+              child: Column(
                 children: [
-                  Text('Quize', style: AppTextStyle.poppins18secondBlackColor),
-                  CircleAvatar(
-                    radius: 15.r,
-                    backgroundColor: AppColor.whiteColor,
-                    child: SvgPicture.asset(AppImages.cancelIcone),
+                  const QuizHeader(),
+                  SizedBox(height: _verticalSpacing.h),
+                  QuizProgressBar(currentIndex: index, totalQuestions: total),
+                  SizedBox(height: _verticalSpacing.h),
+                  QuizQuestionSection(
+                    currentIndex: index,
+                    questionData: questionData,
+                    cubit: cubit,
                   ),
+                  const Spacer(),
+                  QuizNavigationButtons(
+                    currentIndex: index,
+                    totalQuestions: total,
+                    cubit: cubit,
+                  ),
+                  SizedBox(height: 20.h),
                 ],
               ),
-              SizedBox(height: 50.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 300.w,
-                    child: LinearProgressIndicator(
-                      value: 0.1,
-                      backgroundColor: AppColor.whiteColor,
-                      color: AppColor.primaryColor,
-                      minHeight: 5.h,
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                  ),
-                  Text("5/1"),
-                ],
-              ),
-              SizedBox(height: 50.h),
-
-              Text(
-                'Which of the following is not a principle of Object-Oriented Programming?',
-                style: AppTextStyle.poppins18w500lightBlackColor,
-              ),
-              SizedBox(height: 20.h),
-              AnswerContainerWidgets(
-                answerOption: 'A',
-                answerText: 'Abstraction',
-              ),
-              SizedBox(height: 20.h),
-              AnswerContainerWidgets(
-                answerOption: 'B',
-                answerText: 'Polymorphism',
-              ),
-              SizedBox(height: 20.h),
-              AnswerContainerWidgets(
-                answerOption: 'C',
-                answerText: 'Inheritance',
-              ),
-              SizedBox(height: 20.h),
-              AnswerContainerWidgets(
-                answerOption: 'D',
-                answerText: 'Compilation',
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
