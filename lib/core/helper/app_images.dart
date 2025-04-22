@@ -46,6 +46,9 @@ class AppImages {
   static const String editProfile =
       'assets/images/edit_profile/editprofile.png';
 
+  /// path of question screen
+  static const String cancelIcone = 'assets/icons/cancel.svg';
+
   /// oath of notification screen
   static const String notificationIcon =
       'assets/images/notifications/notification.png';
