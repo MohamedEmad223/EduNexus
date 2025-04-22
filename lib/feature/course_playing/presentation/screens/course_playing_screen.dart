@@ -21,7 +21,7 @@ class CoursePlayingScreen extends StatelessWidget {
               children: [
                 const VideoWidget(),
                 Positioned(
-                  top: 40.h, // adjust based on your UI needs
+                  top: 40.h, 
                   left: 15.w,
                   child: GestureDetector(
                     onTap: () => Navigator.pop(context),
