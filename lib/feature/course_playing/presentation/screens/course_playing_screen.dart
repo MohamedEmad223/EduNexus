@@ -29,10 +29,13 @@ class CoursePlayingScreen extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  ContentWidgets(),
-                  MaterialWidgets(),
+                  const ContentWidgets(),
+                  Center(child: MaterialWidgets()),
                   Center(
-                    child: Text('Discussion', style: TextStyle(fontSize: 20)),
+                    child: Text(
+                      'Discussion',
+                      style: TextStyle(fontSize: 20.sp),
+                    ),
                   ),
                 ],
               ),
@@ -42,15 +45,11 @@ class CoursePlayingScreen extends StatelessWidget {
         bottomNavigationBar: Container(
           padding: EdgeInsets.symmetric(vertical: 30.w),
           color: AppColor.whiteColor,
-          // height: 35.h, // Adjust the overall height of the TabBar
           child: TabBar(
             labelColor: AppColor.primaryColor,
             unselectedLabelColor: Colors.grey,
             indicatorColor: AppColor.primaryColor,
-            labelStyle: TextStyle(
-              fontSize: 15.sp, // Adjust the font size of the selected label
-              height: 1.h, // Adjust the line height of the selected label
-            ),
+            labelStyle: TextStyle(fontSize: 15.sp, height: 1.h),
             unselectedLabelStyle: TextStyle(fontSize: 14.sp, height: 1.h),
             tabs: const [
               Tab(text: 'Overview'),
