@@ -1,6 +1,8 @@
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
+import 'package:edunexus/feature/auth/login/cubit/cubit/login_cubit.dart';
+import 'package:edunexus/feature/auth/login/data/repo/login_repository.dart';
 import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
 import 'package:edunexus/feature/auth/register/cubit/cubit/signup_cubit.dart';
 import 'package:edunexus/feature/auth/register/data/repo/sign_up_repository.dart';
@@ -43,7 +45,15 @@ class AppRoutes {
           builder: (context) => const OnBoardingScreen(),
         );
       case Routes.login:
-        return CustomPageRoute(builder: (context) => const LoginScreen());
+        return CustomPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (context) => LoginCubit(
+                  LoginRepository(dioHandler),
+                ),
+                child: const LoginScreen(),
+              ),
+        );
       case Routes.register:
         return CustomPageRoute(
           builder:
