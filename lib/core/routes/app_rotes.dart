@@ -1,7 +1,7 @@
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
-import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
+import 'package:edunexus/feature/auth/login/presentation/screens/login_screen.dart';
 import 'package:edunexus/feature/auth/register/cubit/cubit/signup_cubit.dart';
 import 'package:edunexus/feature/auth/register/data/repo/sign_up_repository.dart';
 import 'package:edunexus/feature/auth/register/presentation/screens/register_screen.dart';
