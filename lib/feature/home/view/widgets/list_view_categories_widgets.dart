@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListViewCategoriesWidgets extends StatelessWidget {
-  const ListViewCategoriesWidgets({super.key, required this.categories });
+  const ListViewCategoriesWidgets({super.key, required this.categories});
 
   final List<dynamic> categories;
 
@@ -20,11 +20,12 @@ class ListViewCategoriesWidgets extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(right: 10.w),
             child: Container(
-              height: 60.h,
+              height: 30.h,
               width: 60.w,
+
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(40.r),
+                borderRadius: BorderRadius.circular(20.r),
               ),
               child: Text('$category'),
             ),

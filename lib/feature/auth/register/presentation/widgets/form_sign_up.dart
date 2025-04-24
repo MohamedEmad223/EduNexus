@@ -1,6 +1,7 @@
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/app_regex.dart';
 import 'package:edunexus/core/helper/helper_methods.dart';
+import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
@@ -140,6 +141,10 @@ class _FormSignUpState extends State<FormSignUp> {
                       'password': signupCubit.passwordController.text,
                       'role': selectedRole!,
                     });
+                    CacheHelper().saveData(
+                      key: 'name',
+                      value: signupCubit.nameController.text,
+                    );
                   }
                 },
                 color: AppColor.primaryColor,
