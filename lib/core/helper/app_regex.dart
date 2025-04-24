@@ -20,7 +20,7 @@ class AppRegex {
   }
 
   static bool isNameVaild(String name) {
-    return RegExp(r'^[a-zA-Z\s]+$').hasMatch(name);
+    return RegExp('Enter Your Name').hasMatch(name);
   }
 
   static bool hasUpperCase(String password) {
