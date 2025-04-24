@@ -12,12 +12,15 @@ class CourseDetails extends StatelessWidget {
   const CourseDetails({super.key, this.allCoursesModel});
   final AllCoursesModel? allCoursesModel;
 
-  saveCourseId() {
+  void saveCourseId() {
     CacheHelper().saveData(key: 'courseID', value: allCoursesModel?.sId);
   }
 
-  saveLessonsId() {
-    CacheHelper().saveData(key: 'lessonsID', value: allCoursesModel!.lessons?[0]);
+  void saveLessonsId() {
+    CacheHelper().saveData(
+      key: 'lessonsID',
+      value: allCoursesModel!.lessons?[0],
+    );
   }
 
   @override
@@ -27,12 +30,8 @@ class CourseDetails extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            // Main content layout
             Column(
               children: [
-                // AppBar with back button
-
-                // Image part
                 CachedNetworkImage(
                   imageUrl: allCoursesModel?.thumbnail ?? 'There is no image',
                   placeholder:
@@ -54,9 +53,8 @@ class CourseDetails extends StatelessWidget {
               ),
             ),
 
-            // Floating container above bottom of the image
             Positioned(
-              top: 250.h, // Adjust to control how much it overlaps
+              top: 250.h,
               left: 0.w,
               right: 0.w,
               child: Container(
