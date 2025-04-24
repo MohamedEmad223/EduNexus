@@ -14,34 +14,36 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 50.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SignUpTitleTextWidget(
-                title: 'Create Account',
-                style: AppTextStyle.poppins36w600primaryColor,
-              ),
-              SignUpTitleTextWidget(
-                title: 'Welcome! Sign up to continue!',
-                style: AppTextStyle.poppins12greyColor,
-              ),
-              SizedBox(height: 40.h),
-              LableText(text: "Name"),
-              SizedBox(height: 10.h),
-              FormSignUp(),
-              SizedBox(height: 20.h),
-              DoNotHaveAnAccount(
-                text: "Login",
-                onPressed:
-                    () => Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/login',
-                      (route) => false,
-                    ),
-              ),
-            ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 50.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SignUpTitleTextWidget(
+                  title: 'Create Account',
+                  style: AppTextStyle.poppins36w600primaryColor,
+                ),
+                SignUpTitleTextWidget(
+                  title: 'Welcome! Sign up to continue!',
+                  style: AppTextStyle.poppins12greyColor,
+                ),
+                SizedBox(height: 40.h),
+                LableText(text: "Name"),
+                SizedBox(height: 10.h),
+                FormSignUp(),
+                SizedBox(height: 20.h),
+                DoNotHaveAnAccount(
+                  text: "Login",
+                  onPressed:
+                      () => Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/login',
+                        (route) => false,
+                      ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

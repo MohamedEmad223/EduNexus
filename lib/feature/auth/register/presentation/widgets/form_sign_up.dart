@@ -6,14 +6,20 @@ import 'package:edunexus/feature/auth/register/presentation/widgets/drop_down_wi
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FormSignUp extends StatelessWidget {
+class FormSignUp extends StatefulWidget {
   const FormSignUp({super.key});
 
+  @override
+  State<FormSignUp> createState() => _FormSignUpState();
+}
+
+class _FormSignUpState extends State<FormSignUp> {
+  
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-
+    
       children: [
         AppTextFormField(
           hintText: "Enter your name",
