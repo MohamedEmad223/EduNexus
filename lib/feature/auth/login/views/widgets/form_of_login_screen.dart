@@ -57,10 +57,16 @@ class _FormOfLoginScreenState extends State<FormOfLoginScreen> {
             (route) => false,
           );
           state.loginModel?.token != null
-              ? SharedPrefHelper.setSecuredString('token', state.loginModel!.token!)
+              ? CacheHelper().saveSecuredData(
+                key: 'token',
+                value: state.loginModel!.token!,
+              )
               : null;
-          state.loginModel?.user?.sId != null?
-              SharedPrefHelper.setSecuredString('userId', state.loginModel!.user!.sId!)
+          state.loginModel?.user?.sId != null
+              ? CacheHelper().saveSecuredData(
+                key: 'userId',
+                value: state.loginModel!.user!.sId!,
+              )
               : null;
         } else if (state is LoginError) {
           Navigator.pop(context);

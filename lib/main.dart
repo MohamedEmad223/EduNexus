@@ -1,8 +1,16 @@
+import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/routes/app_rotes.dart';
 import 'package:edunexus/edu_neuxus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+bool? showOnBoarding;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(EduNeuxus(appRoutes: AppRoutes()));
+  ScreenUtil.ensureScreenSize();
+
+  showOnBoarding = CacheHelper().getData(key: 'first_time_run');
+
+  CacheHelper().saveData(key: 'first_time_run', value: true);
 }
