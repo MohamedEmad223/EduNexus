@@ -1,4 +1,4 @@
-class AllCourses {
+class AllCoursesModel {
   String? sId;
   String? title;
   String? description;
@@ -12,7 +12,7 @@ class AllCourses {
   int? price;
   int? rate;
 
-  AllCourses(
+  AllCoursesModel(
       {this.sId,
       this.title,
       this.description,
@@ -26,7 +26,7 @@ class AllCourses {
       this.price,
       this.rate});
 
-  AllCourses.fromJson(Map<String, dynamic> json) {
+  AllCoursesModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     title = json['title'];
     description = json['description'];
@@ -41,20 +41,5 @@ class AllCourses {
     rate = json['rate'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['_id'] = sId;
-    data['title'] = title;
-    data['description'] = description;
-    data['createdBy'] = createdBy;
-    data['enrolledStudents'] = enrolledStudents;
-    data['quizzes'] = quizzes;
-    data['materials'] = materials;
-    data['lessons'] = lessons;
-    data['__v'] = iV;
-    data['category'] = category;
-    data['price'] = price;
-    data['rate'] = rate;
-    return data;
-  }
+  
 }
