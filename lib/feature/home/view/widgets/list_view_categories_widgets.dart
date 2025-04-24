@@ -1,20 +1,22 @@
-import 'package:edunexus/core/helper/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListViewCategoriesWidgets extends StatelessWidget {
-  const ListViewCategoriesWidgets({super.key});
+  const ListViewCategoriesWidgets({super.key, required this.categories });
+
+  final List<dynamic> categories;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60.h,
       child: ListView.builder(
-        itemCount: 7,
+        itemCount: categories.length,
         shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
+          final category = categories[index];
           return Padding(
             padding: EdgeInsets.only(right: 10.w),
             child: Container(
@@ -24,7 +26,7 @@ class ListViewCategoriesWidgets extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(40.r),
               ),
-              child: Image.asset(AppImages.personIcon),
+              child: Text('$category'),
             ),
           );
         },

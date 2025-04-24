@@ -8,7 +8,7 @@ class AllCoursesRepo {
   final ApiServices apiServices;
   AllCoursesRepo(this.apiServices);
 
-  Future<Either<String, AllCoursesModel>> getAllCourses(
+  Future<Either<String, List<AllCoursesModel>>> getAllCourses(
     String path,
     String token,
   ) async {
@@ -17,7 +17,7 @@ class AllCoursesRepo {
         path,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
-      var result = AllCoursesModel.fromJson(response);
+      var result = AllCoursesModel.fromJsonList(response);
       return Right(result);
     } on ApiException catch (e) {
       return Left(e.errorModel.message!);

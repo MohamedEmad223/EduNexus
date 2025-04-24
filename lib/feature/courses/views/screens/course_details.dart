@@ -3,11 +3,13 @@ import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/views/widgets/add_to_cart_widgets.dart';
 import 'package:edunexus/feature/courses/views/widgets/row_course_details_widgets.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseDetails extends StatelessWidget {
-  const CourseDetails({super.key});
+  const CourseDetails({super.key, this.allCoursesModel});
+  final AllCoursesModel? allCoursesModel;
 
   @override
   Widget build(BuildContext context) {

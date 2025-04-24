@@ -28,7 +28,7 @@ class EduNeuxus extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRoutes.generateRoute,
-        initialRoute: Routes.home,
+        initialRoute: Routes.splash,
       ),
     );
   }

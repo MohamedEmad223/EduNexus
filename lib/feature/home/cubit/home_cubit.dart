@@ -17,7 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await allCoursesRepo.getAllCourses(path, token);
     result.fold(
       (error) => emit(HomeError(errorMessage: error)),
-      (allCoursesModel) => emit(HomeSuccess(allCoursesModel: allCoursesModel)),
+      (allCoursesList) => emit(HomeSuccess(allCoursesList: allCoursesList)),
     );
   }
 }

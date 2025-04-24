@@ -1,10 +1,13 @@
 import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GrideViewCousre extends StatelessWidget {
-  const GrideViewCousre({super.key, this.onPressed});
+  const GrideViewCousre({super.key, this.onPressed, this.course});
   final void Function()? onPressed;
+
+  final AllCoursesModel? course;
 
   @override
   Widget build(BuildContext context) {

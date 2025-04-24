@@ -1,3 +1,4 @@
+import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
@@ -13,6 +14,8 @@ import 'package:edunexus/feature/course_playing/presentation/screens/course_play
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
+import 'package:edunexus/feature/home/cubit/home_cubit.dart';
+import 'package:edunexus/feature/home/data/repos/all_courses_repo.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
 import 'package:edunexus/feature/notification/presentation/screens/notificatios_screen.dart';
@@ -48,9 +51,7 @@ class AppRoutes {
         return CustomPageRoute(
           builder:
               (context) => BlocProvider(
-                create: (context) => LoginCubit(
-                  LoginRepository(dioHandler),
-                ),
+                create: (context) => LoginCubit(LoginRepository(dioHandler)),
                 child: const LoginScreen(),
               ),
         );
@@ -69,7 +70,20 @@ class AppRoutes {
       case Routes.cart:
         return CustomPageRoute(builder: (context) => const CartScreen());
       case Routes.botNavBar:
-        return CustomPageRoute(builder: (context) => const BottomNavBar());
+        return CustomPageRoute(
+          builder:
+              (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create:
+                        (context) =>
+                            HomeCubit(AllCoursesRepo(dioHandler))
+                              ..getAllCourses(AppConstants.getAllCourses),
+                  ),
+                ],
+                child: const BottomNavBar(),
+              ),
+        );
       case Routes.course:
         return CustomPageRoute(builder: (context) => const CoursesScreen());
       case Routes.courseDetails:
