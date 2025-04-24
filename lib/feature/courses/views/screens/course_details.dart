@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
@@ -13,12 +14,15 @@ class CourseDetails extends StatelessWidget {
   final AllCoursesModel? allCoursesModel;
 
   void saveCourseId() {
-    CacheHelper().saveData(key: 'courseID', value: allCoursesModel?.sId);
+    CacheHelper().saveData(
+      key: AppConstants.courseId,
+      value: allCoursesModel?.sId,
+    );
   }
 
   void saveLessonsId() {
     CacheHelper().saveData(
-      key: 'lessonsID',
+      key: AppConstants.lessonId,
       value: allCoursesModel!.lessons?[0],
     );
   }
@@ -103,26 +107,9 @@ class CourseDetails extends StatelessWidget {
                     RowCourseDetailsWidgets(
                       isFinshed: true,
                       index: '01',
-                      title: 'Introduction to Product Design',
+                      title:  allCoursesModel?.title ?? 'There is no title',
                       time: '2h 30min',
                       isPurshesed: true,
-                    ),
-                    SizedBox(height: 20.h),
-                    RowCourseDetailsWidgets(
-                      isFinshed: true,
-                      index: '02',
-                      title: 'Introduction to Product Design',
-                      time: '2h 30min',
-                      isPurshesed: true,
-                    ),
-                    SizedBox(height: 20.h),
-
-                    RowCourseDetailsWidgets(
-                      isFinshed: true,
-                      index: '03',
-                      title: 'Introduction to Product Design',
-                      time: '2h 30min',
-                      isPurshesed: false,
                     ),
                   ],
                 ),

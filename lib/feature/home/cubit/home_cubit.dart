@@ -1,5 +1,7 @@
+
 import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/feature/home/data/model/all_courses.dart';
+import 'package:edunexus/feature/home/data/model/lessone_model.dart';
 import 'package:edunexus/feature/home/data/repos/all_courses_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,4 +22,16 @@ class HomeCubit extends Cubit<HomeState> {
       (allCoursesList) => emit(HomeSuccess(allCoursesList: allCoursesList)),
     );
   }
+
+  // final SpecialLessonRepository specialLessonRepository;
+
+  // Future<void> getLessone(String path) async {
+  //   emit(LessonLoading());
+  //   final token = await CacheHelper().getSecuredData(key: 'token') ?? '';
+  //   final result = await specialLessonRepository.getAllLessones(path, token);
+  //   result.fold(
+  //     (error) => emit(LessonError(errorMessage: error)),
+  //     (allLessonsList) => emit(LessonSuccess(allCoursesList: allLessonsList)),
+  //   );
+  // }
 }

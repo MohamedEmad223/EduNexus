@@ -6,4 +6,7 @@ class AppConstants {
   static const String logIn = 'auth/login';
   static const String getAllCourses = 'courses';
   static const String token='/token';
+  static const String courseId = 'courseId';
+  static const String lessonId = 'lessonId';
+  static const String speciphicCourse = 'courses/$courseId/lessons/$lessonId';
 }

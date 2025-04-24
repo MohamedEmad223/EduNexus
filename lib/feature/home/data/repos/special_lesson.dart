@@ -8,7 +8,7 @@ class SpecialLessonRepository {
   final ApiServices apiServices;
   SpecialLessonRepository(this.apiServices);
 
-  Future<Either<String, List<LessonModel>>> getAllCourses(
+  Future<Either<String, List<LessonModel>>> getAllLessones(
     String path,
     String token,
   ) async {
@@ -22,7 +22,7 @@ class SpecialLessonRepository {
 
       return Right([lesson]);
     } on ApiException catch (e) {
-      return Left(e.errorModel.message!);
+      return Left(e.errorModel.message?? '');
     }
   }
 }

@@ -1,6 +1,9 @@
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/views/widgets/row_course_details_widgets.dart';
+import 'package:edunexus/feature/questions/cubit/cubit/quiz_cubit.dart';
+import 'package:edunexus/feature/questions/presentation/screens/questions_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ContentWidgets extends StatelessWidget {
@@ -54,20 +57,35 @@ class ContentWidgets extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           RowCourseDetailsWidgets(
-            isFinshed: true,
+            isFinshed: false,
             index: '02',
-            title: 'Introduction to Product Design',
-            time: '2h 30min',
+            title: 'Quiz',
+            time: '2h ',
             isPurshesed: true,
           ),
           SizedBox(height: 20.h),
 
-          RowCourseDetailsWidgets(
-            isFinshed: true,
-            index: '03',
-            title: 'Introduction to Product Design',
-            time: '2h 30min',
-            isPurshesed: false,
+          InkWell(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => BlocProvider(
+                        create: (context) => QuizCubit(),
+                        child: QuestionsScreen(),
+                      ),
+                ),
+                (route) => false,
+              );
+            },
+            child: RowCourseDetailsWidgets(
+              isFinshed: true,
+              index: '03',
+              title: 'Introduction to Product Design',
+              time: '2h 30min',
+              isPurshesed: false,
+            ),
           ),
         ],
       ),

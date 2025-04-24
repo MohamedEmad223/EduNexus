@@ -75,11 +75,11 @@ class _RowCourseDetailsWidgetsState extends State<RowCourseDetailsWidgets> {
           backgroundColor:
               widget.isPurshesed
                   ? AppColor.primaryColor
-                  : AppColor.primaryColor.withOpacity(0.3),
+                  : AppColor.primaryColor,
           child:
               widget.isPurshesed
                   ? Icon(Icons.play_arrow, color: Colors.white, size: 30.sp)
-                  : Icon(Icons.lock, color: Colors.white, size: 30.sp),
+                  : Icon(Icons.quiz, color: Colors.white, size: 25.sp),
         ),
       ],
     );
