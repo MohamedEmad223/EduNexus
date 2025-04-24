@@ -23,7 +23,7 @@ class EduNeuxus extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRoutes.generateRoute,
-        initialRoute: Routes.coursePlaying,
+        initialRoute: Routes.register,
       ),
     );
   }

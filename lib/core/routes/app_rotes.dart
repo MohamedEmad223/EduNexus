@@ -1,7 +1,7 @@
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
 import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
-import 'package:edunexus/feature/auth/register/view/screens/register_screen.dart';
+import 'package:edunexus/feature/auth/register/presentation/screens/register_screen.dart';
 import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
 import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
 import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
