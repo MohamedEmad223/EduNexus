@@ -7,7 +7,7 @@ abstract class ApiServices {
   });
   Future<dynamic> post(
     String path, {
-    dynamic data,
+    Map<String,dynamic> data,
     Map<String, dynamic>? queryParameters,
     bool isFormData = false,
     dynamic options,

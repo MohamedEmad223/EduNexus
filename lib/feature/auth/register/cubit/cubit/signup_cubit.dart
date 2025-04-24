@@ -9,8 +9,11 @@ class SignupCubit extends Cubit<SignupState> {
   SignupCubit(this.signUpRepository) : super(SignupInitial());
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController nameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController roleController = TextEditingController();
 
   final SignUpRepository signUpRepository;
 
