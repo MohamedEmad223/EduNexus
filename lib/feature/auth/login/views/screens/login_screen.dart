@@ -11,15 +11,17 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0.h, vertical: 80.0.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ImageWidgets(),
-              SizedBox(height: 80.h),
-              FormOfLoginScreen(),
-            ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0.h, vertical: 80.0.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ImageWidgets(),
+                SizedBox(height: 80.h),
+                FormOfLoginScreen(),
+              ],
+            ),
           ),
         ),
       ),

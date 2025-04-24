@@ -17,8 +17,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10.w,
                                   mainAxisSpacing: 10.h,
-                                  childAspectRatio: 1 / 1.5,
+                                  childAspectRatio: 1 / 1.8,
                                 ),
                             itemBuilder: (context, index) {
                               final course = courses[index];

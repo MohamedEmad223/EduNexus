@@ -20,14 +20,13 @@ class ListViewCategoriesWidgets extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(right: 10.w),
             child: Container(
-              height: 30.h,
-              width: 60.w,
-
+              height: 25.h,
+              width: 100.w,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20.r),
               ),
-              child: Text('$category'),
+              child: Center(child: Text('$category')),
             ),
           );
         },
