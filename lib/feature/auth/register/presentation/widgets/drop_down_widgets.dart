@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DropDownWidgets extends StatelessWidget {
-  const DropDownWidgets({super.key});
+  final Function(String?) onRoleSelected;
+
+  const DropDownWidgets({super.key, required this.onRoleSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +24,15 @@ class DropDownWidgets extends StatelessWidget {
           borderSide: BorderSide(color: AppColor.primaryColor, width: 2.0.w),
         ),
       ),
-      items:
-          <String>['Instructor', 'Admin'].map((String value) {
-            return DropdownMenuItem<String>(value: value, child: Text(value));
-          }).toList(),
-      onChanged: (String? value) {},
+      items: <String>['Instructor', 'Admin'].map((String value) {
+        return DropdownMenuItem<String>(value: value, child: Text(value));
+      }).toList(),
+      onChanged: (String? value) {
+        onRoleSelected(value); 
+      },
       validator: (value) {
-        if (value == null || value.isEmpty) {
-          return "Please select a role";
+        if (value == null) {
+          return 'Please select a role';
         }
         return null;
       },
