@@ -1,5 +1,5 @@
-import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/feature/auth/login/views/widgets/form_of_login_screen.dart';
+import 'package:edunexus/feature/auth/login/views/widgets/image_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,12 +16,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Image.asset(
-                  AppImages.splashLogo,
-                  alignment: Alignment.center,
-                ),
-              ),
+              ImageWidgets(),
               SizedBox(height: 80.h),
               FormOfLoginScreen(),
             ],
