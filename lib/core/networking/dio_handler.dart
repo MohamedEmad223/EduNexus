@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:edunexus/core/error/api/exceptions/exception_helper_methods.dart';
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/networking/api_services.dart';
-
-
+import 'package:flutter/foundation.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHandler extends ApiServices {
   late Dio dio;
@@ -17,18 +18,23 @@ class DioHandler extends ApiServices {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Connection': 'keep-alive',
-        'Accept-Encoding': 'gzip, deflate, br'
+        'Accept-Encoding': 'gzip, deflate, br',
       },
     );
     dio = Dio(baseOptions);
-    dio.interceptors.add(LogInterceptor(
-      request: true,
-      requestHeader: true,
-      requestBody: true,
-      responseHeader: true,
-      responseBody: true,
-      error: true,
-    ));
+    dio.interceptors.add(
+      PrettyDioLogger(
+        request: true,
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+        responseBody: true,
+        error: true,
+        compact: true,
+        maxWidth: 90,
+        enabled: kDebugMode,
+      ),
+    );
   }
 
   @override
@@ -94,7 +100,6 @@ class DioHandler extends ApiServices {
     }
   }
 
-  @override
   Future put(
     String path, {
     dynamic data,
