@@ -1,9 +1,21 @@
-import 'package:bloc/bloc.dart';
 import 'package:edunexus/feature/auth/register/data/model/sign_up_model.dart';
-import 'package:meta/meta.dart';
+import 'package:edunexus/feature/auth/register/data/repo/sign_up_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'signup_state.dart';
 
 class SignupCubit extends Cubit<SignupState> {
-  SignupCubit() : super(SignupInitial());
+  SignupCubit(this.signUpRepository) : super(SignupInitial());
+
+  final SignUpRepository signUpRepository;
+
+  Future<void> signUp(String path, Map<String, dynamic> data) async {
+    emit(SignupLoading());
+
+    final result = await signUpRepository.signUp(path, data);
+    result.fold(
+      (error) => emit(SignupError(errorMessage: error)),
+      (signUpModel) => emit(SignupSuccess(signUpModel: signUpModel)),
+    );
+  }
 }
