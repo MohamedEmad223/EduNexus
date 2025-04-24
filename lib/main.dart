@@ -7,7 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 bool? showOnBoarding;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(EduNeuxus(appRoutes: AppRoutes()));
+  CacheHelper cacheHelper = CacheHelper();
+  await cacheHelper.init();
+  final token = await CacheHelper().getSecuredData(key: 'token');
+  runApp( EduNeuxus(appRoutes: AppRoutes(), isLoggedIn: token != null));
   ScreenUtil.ensureScreenSize();
 
   showOnBoarding = CacheHelper().getData(key: 'first_time_run');

@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EduNeuxus extends StatelessWidget {
-  const EduNeuxus({super.key, required this.appRoutes});
+  const EduNeuxus({
+    super.key,
+    required this.appRoutes,
+    required this.isLoggedIn,
+  });
   final AppRoutes appRoutes;
+  final bool isLoggedIn;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class EduNeuxus extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRoutes.generateRoute,
-        initialRoute: Routes.splash,
+        initialRoute: Routes.home,
       ),
     );
   }
