@@ -1,10 +1,10 @@
-class SignUp {
+class SignUpModel {
   User? user;
   String? token;
 
-  SignUp({this.user, this.token});
+  SignUpModel({this.user, this.token});
 
-  SignUp.fromJson(Map<String, dynamic> json) {
+  SignUpModel.fromJson(Map<String, dynamic> json) {
     user = json['user'] != null ? User.fromJson(json['user']) : null;
     token = json['token'];
   }
