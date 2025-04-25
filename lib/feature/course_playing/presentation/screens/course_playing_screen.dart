@@ -1,4 +1,5 @@
 import 'package:edunexus/feature/course_playing/presentation/widgets/disscussion.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:edunexus/core/theme/app_color.dart';
@@ -7,7 +8,9 @@ import 'package:edunexus/feature/course_playing/presentation/widgets/material_wi
 import 'package:edunexus/feature/course_playing/presentation/widgets/video_widget.dart';
 
 class CoursePlayingScreen extends StatelessWidget {
-  const CoursePlayingScreen({super.key});
+  const CoursePlayingScreen({super.key,  this.allCoursesModel});
+
+  final AllCoursesModel? allCoursesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +22,9 @@ class CoursePlayingScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                const VideoWidget(),
+                VideoWidget(allCoursesModel: allCoursesModel!),
                 Positioned(
-                  top: 40.h, 
+                  top: 40.h,
                   left: 15.w,
                   child: GestureDetector(
                     onTap: () => Navigator.pop(context),

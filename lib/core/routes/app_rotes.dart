@@ -85,7 +85,16 @@ class AppRoutes {
               ),
         );
       case Routes.course:
-        return CustomPageRoute(builder: (context) => const CoursesScreen());
+        return CustomPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create:
+                    (context) =>
+                        HomeCubit(AllCoursesRepo(dioHandler))
+                          ,
+                child: const CoursesScreen(),
+              ),
+        );
       case Routes.courseDetails:
         return CustomPageRoute(builder: (context) => const CourseDetails());
       case Routes.leaderBoard:

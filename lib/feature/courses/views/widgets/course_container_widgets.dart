@@ -1,10 +1,13 @@
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseContainerWidgets extends StatelessWidget {
-  const CourseContainerWidgets({super.key});
+  const CourseContainerWidgets({super.key, required this.allCoursesModel});
+
+  final AllCoursesModel allCoursesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +32,13 @@ class CourseContainerWidgets extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'JavaScript for Beginners',
+                  allCoursesModel.title ?? 'No title',
+                  maxLines: 1,
                   style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 20.h),
                 LinearProgressIndicator(
                   value: 0.5,
                   backgroundColor: AppColor.whiteColor,
@@ -44,15 +48,16 @@ class CourseContainerWidgets extends StatelessWidget {
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  'Completed',
+                  allCoursesModel.description ?? 'No description',
+                  maxLines: 1,
                   style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 12.sp,
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 25.h),
                 Text(
-                  '14/24',
+                  '14/${allCoursesModel.lessons?.length} ',
                   style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 20.sp,
