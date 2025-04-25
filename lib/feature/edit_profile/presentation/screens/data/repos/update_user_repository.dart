@@ -13,7 +13,7 @@ class UpdateUserRepository {
     try {
       await apiServices.update(
         path,
-        
+        data: data,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
       var result = UpdateUserModel.fromJson(data);

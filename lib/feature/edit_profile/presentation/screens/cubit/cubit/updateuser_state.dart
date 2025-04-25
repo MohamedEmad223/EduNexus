@@ -1,6 +1,5 @@
 part of 'updateuser_cubit.dart';
 
-@immutable
 sealed class UpdateuserState {}
 
 final class UpdateuserInitial extends UpdateuserState {}
