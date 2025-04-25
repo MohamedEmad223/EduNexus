@@ -13,6 +13,8 @@ import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
 import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
+import 'package:edunexus/feature/edit_profile/presentation/screens/cubit/cubit/updateuser_cubit.dart';
+import 'package:edunexus/feature/edit_profile/presentation/screens/data/repos/update_user_repository.dart';
 import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
 import 'package:edunexus/feature/home/data/repos/all_courses_repo.dart';
@@ -88,10 +90,7 @@ class AppRoutes {
         return CustomPageRoute(
           builder:
               (context) => BlocProvider(
-                create:
-                    (context) =>
-                        HomeCubit(AllCoursesRepo(dioHandler))
-                          ,
+                create: (context) => HomeCubit(AllCoursesRepo(dioHandler)),
                 child: const CoursesScreen(),
               ),
         );
@@ -106,7 +105,15 @@ class AppRoutes {
           builder: (context) => const NotificatiosScreen(),
         );
       case Routes.editProfileScreen:
-        return CustomPageRoute(builder: (context) => const EditProfileScreen());
+        return CustomPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create:
+                    (context) =>
+                        UpdateuserCubit(UpdateUserRepository(dioHandler)),
+                child: const EditProfileScreen(),
+              ),
+        );
       case Routes.questoinScreen:
         return CustomPageRoute(
           builder:
