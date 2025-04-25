@@ -19,7 +19,7 @@ class _VideoWidgetState extends State<VideoWidget> {
 void initState() {
   super.initState();
   
-  final path = widget.allCoursesModel.lessons?[4].;
+  final path = widget.allCoursesModel.lessons?[4];
 
   flickManager = FlickManager(
     videoPlayerController: VideoPlayerController.network(
