@@ -1,9 +1,9 @@
-class UpdataUserModel {
+class UpdateUserModel {
   String? name;
   String? email;
 
-  UpdataUserModel({this.name, this.email});
-  UpdataUserModel.fromJson(Map<String, dynamic> json) {
+  UpdateUserModel({this.name, this.email});
+  UpdateUserModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     email = json['email'];
   }
