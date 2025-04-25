@@ -1,3 +1,4 @@
+import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/routes/app_rotes.dart';
 import 'package:edunexus/edu_neuxus.dart';
@@ -9,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   CacheHelper cacheHelper = CacheHelper();
   await cacheHelper.init();
-  final token = await CacheHelper().getSecuredData(key: 'token');
+  final token = await CacheHelper().getSecuredData(key: AppConstants.token);
   runApp( EduNeuxus(appRoutes: AppRoutes(), isLoggedIn: token != null));
   ScreenUtil.ensureScreenSize();
 

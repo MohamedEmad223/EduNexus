@@ -1,13 +1,31 @@
-import 'package:edunexus/core/helper/app_images.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:edunexus/core/helper/app_constants.dart';
+import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/views/widgets/add_to_cart_widgets.dart';
 import 'package:edunexus/feature/courses/views/widgets/row_course_details_widgets.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseDetails extends StatelessWidget {
-  const CourseDetails({super.key});
+  const CourseDetails({super.key, this.allCoursesModel});
+  final AllCoursesModel? allCoursesModel;
+
+  void saveCourseId() {
+    CacheHelper().saveData(
+      key: AppConstants.courseId,
+      value: allCoursesModel?.sId,
+    );
+  }
+
+  void saveLessonsId() {
+    CacheHelper().saveData(
+      key: AppConstants.lessonId,
+      value: allCoursesModel!.lessons?[0],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +34,13 @@ class CourseDetails extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            // Main content layout
             Column(
               children: [
-                // AppBar with back button
-
-                // Image part
-                Image.asset(
-                  AppImages.courseDetails,
+                CachedNetworkImage(
+                  imageUrl: allCoursesModel?.thumbnail ?? 'There is no image',
+                  placeholder:
+                      (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: 300.h,
@@ -40,9 +57,8 @@ class CourseDetails extends StatelessWidget {
               ),
             ),
 
-            // Floating container above bottom of the image
             Positioned(
-              top: 250.h, // Adjust to control how much it overlaps
+              top: 250.h,
               left: 0.w,
               right: 0.w,
               child: Container(
@@ -59,11 +75,13 @@ class CourseDetails extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Product Design v1.0',
+                          allCoursesModel?.title ?? 'There is no title',
                           style: AppTextStyle.poppins20BoldblackColor,
                         ),
                         Text(
-                          '\$74.00',
+                          allCoursesModel?.price != null
+                              ? '\$${allCoursesModel!.price}'
+                              : 'No price',
                           style: AppTextStyle.poppins16w600primaryColor,
                         ),
                       ],
@@ -82,33 +100,16 @@ class CourseDetails extends StatelessWidget {
                     ),
                     SizedBox(height: 4.h),
                     Text(
-                      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+                      allCoursesModel?.description ?? 'There is no description',
                       style: TextStyle(fontSize: 12.sp, color: Colors.grey),
                     ),
                     SizedBox(height: 30.h),
                     RowCourseDetailsWidgets(
                       isFinshed: true,
                       index: '01',
-                      title: 'Introduction to Product Design',
+                      title:  allCoursesModel?.title ?? 'There is no title',
                       time: '2h 30min',
                       isPurshesed: true,
-                    ),
-                    SizedBox(height: 20.h),
-                    RowCourseDetailsWidgets(
-                      isFinshed: true,
-                      index: '02',
-                      title: 'Introduction to Product Design',
-                      time: '2h 30min',
-                      isPurshesed: true,
-                    ),
-                    SizedBox(height: 20.h),
-
-                    RowCourseDetailsWidgets(
-                      isFinshed: true,
-                      index: '03',
-                      title: 'Introduction to Product Design',
-                      time: '2h 30min',
-                      isPurshesed: false,
                     ),
                   ],
                 ),

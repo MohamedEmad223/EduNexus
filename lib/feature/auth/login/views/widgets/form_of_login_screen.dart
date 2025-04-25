@@ -58,7 +58,7 @@ class _FormOfLoginScreenState extends State<FormOfLoginScreen> {
           );
           state.loginModel?.token != null
               ? CacheHelper().saveSecuredData(
-                key: 'token',
+                key: AppConstants.token,
                 value: state.loginModel!.token!,
               )
               : null;

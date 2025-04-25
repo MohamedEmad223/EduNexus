@@ -1,4 +1,5 @@
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/result/presentation/widgets/row_of_score_widgets.dart';
@@ -44,7 +45,7 @@ class ResultScreen extends StatelessWidget {
                     RowOfScoreWidgets(
                       iconImage: AppImages.icon,
                       scoreText: 'SCORE GAINED',
-                      scoreValue:score.toString(),
+                      scoreValue: score.toString(),
                     ),
                     Divider(color: AppColor.lightGreyColor, thickness: 1.h),
                     RowOfScoreWidgets(
@@ -60,7 +61,13 @@ class ResultScreen extends StatelessWidget {
                 height: 55.h,
                 width: double.infinity,
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      Routes.botNavBar,
+                      arguments: 0,
+                    );
+                  },
                   color: AppColor.primaryColor,
                   textColor: Colors.white,
                   shape: RoundedRectangleBorder(

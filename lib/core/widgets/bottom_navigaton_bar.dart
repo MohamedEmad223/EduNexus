@@ -1,5 +1,6 @@
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
+import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/settings/views/screens/settings_screen.dart';
@@ -24,7 +25,7 @@ class BottomNavBar extends StatelessWidget {
 }
 
 List<Widget> _buildScreens() {
-  return [HomeScreen(), CartScreen(), CoursesScreen(), SettingsScreen()];
+  return [HomeScreen(), CartScreen(), CoursesScreen(), SettingsScreen(),ChatScreen()];
 }
 
 List<PersistentBottomNavBarItem> _buildNavBarsItems() {
@@ -33,6 +34,7 @@ List<PersistentBottomNavBarItem> _buildNavBarsItems() {
     _buildNavBarItem(Icons.category_rounded, 'Cart'),
     _buildNavBarItem(Icons.video_call, 'Courses'),
     _buildNavBarItem(Icons.settings, "profile"),
+    _buildNavBarItem(Icons.chat, "chat"),
   ];
 }
 
