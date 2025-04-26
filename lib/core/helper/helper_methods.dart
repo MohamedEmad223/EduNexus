@@ -54,7 +54,7 @@ class HelperMethods {
       SnackBar(
         content: Text(
           title,
-          textAlign: TextAlign.right,
+          textAlign: TextAlign.left,
           style: AppTextStyle.poppins14BoldwhiteColor,
         ),
         backgroundColor: Colors.red,

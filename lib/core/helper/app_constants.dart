@@ -1,7 +1,7 @@
 class AppConstants {
   AppConstants._();
   static const String baseUrl =
-      'https://9c54-102-189-87-112.ngrok-free.app/api/';
+      'https://grouse-equal-visually.ngrok-free.app/api/';
   static const String signUP = 'auth/register';
   static const String logIn = 'auth/login';
   static const String getAllCourses = 'courses';
@@ -10,4 +10,5 @@ class AppConstants {
   static const String lessonId = 'lessonId';
   static const String courses = 'courses';
   static const String lessons = 'lessons';
+  static const String updateProfile = 'auth/me';
 }

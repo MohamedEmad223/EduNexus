@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10.w,
                                   mainAxisSpacing: 10.h,
-                                  childAspectRatio: 1 / 1.8,
+                                  childAspectRatio: 1 / 2,
                                 ),
                             itemBuilder: (context, index) {
                               final course = courses[index];

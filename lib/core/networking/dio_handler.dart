@@ -139,4 +139,25 @@ class DioHandler extends ApiServices {
       throw ExceptionHelperMethods.handleDioExceptionsTypes(e);
     }
   }
+  
+  @override
+  Future patch(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    bool isFormData = false,
+    dynamic options,
+  }) async {
+    try {
+      Response response = await dio.patch(
+        path,
+        data: isFormData ? FormData.fromMap(data) : data,
+        queryParameters: queryParameters,
+        options: options,
+      );
+      return response.data;
+    } on DioException catch (e) {
+      throw ExceptionHelperMethods.handleDioExceptionsTypes(e);
+    }
+  }
 }
