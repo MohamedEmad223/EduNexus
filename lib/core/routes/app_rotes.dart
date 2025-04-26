@@ -1,4 +1,5 @@
 import 'package:edunexus/core/helper/app_constants.dart';
+import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
@@ -11,6 +12,8 @@ import 'package:edunexus/feature/auth/register/presentation/screens/register_scr
 import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
 import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
 import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
+import 'package:edunexus/feature/courses/cubit/cubit/courses_all_lessons_cubit.dart';
+import 'package:edunexus/feature/courses/data/repo/all_lessons_repo.dart';
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/edit_profile/cubit/cubit/updateuser_cubit.dart';
@@ -95,6 +98,7 @@ class AppRoutes {
                         (context) =>
                             UpdateuserCubit(UpdateUserRepository(dioHandler)),
                   ),
+
                 ],
                 child: const BottomNavBar(),
               ),
@@ -140,7 +144,7 @@ class AppRoutes {
         return CustomPageRoute(builder: (context) => const ChatScreen());
       case Routes.coursePlaying:
         return CustomPageRoute(
-          builder: (context) => const CoursePlayingScreen(),
+          builder: (context) =>  CoursePlayingScreen(),
         );
     }
     return null;

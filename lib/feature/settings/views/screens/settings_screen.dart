@@ -15,56 +15,50 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UpdateuserCubit(UpdateUserRepository(DioHandler())),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text(
-            'Settings',
-            style: AppTextStyle.poppins16w600primaryColor,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Settings', style: AppTextStyle.poppins16w600primaryColor),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          InformationContainerSettings(),
+          SizedBox(height: 50.h),
+          EditRowWidget(
+            text: 'Edit Profile',
+            imagePath: AppImages.editIcon,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => BlocProvider(
+                        create:
+                            (context) => UpdateuserCubit(
+                              UpdateUserRepository(DioHandler()),
+                            ),
+                        child: EditProfileScreen(),
+                      ),
+                ),
+              );
+            },
           ),
-          centerTitle: true,
-        ),
-        body: Column(
-          children: [
-            InformationContainerSettings(),
-            SizedBox(height: 50.h),
-            EditRowWidget(
-              text: 'Edit Profile',
-              imagePath: AppImages.editIcon,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) => BlocProvider(
-                          create:
-                              (context) => UpdateuserCubit(
-                                UpdateUserRepository(DioHandler()),
-                              ),
-                          child: EditProfileScreen(),
-                        ),
-                  ),
-                );
-              },
-            ),
-            SizedBox(height: 20.h),
-            EditRowWidget(
-              text: 'Courses History',
-              imagePath: AppImages.coursesHistoryIcon,
-            ),
-            SizedBox(height: 20.h),
-            EditRowWidget(text: 'Courses', imagePath: AppImages.coursesIcon),
-            SizedBox(height: 20.h),
-            EditRowWidget(
-              text: 'Change Password',
-              imagePath: AppImages.changePasswordIcon,
-            ),
-            SizedBox(height: 20.h),
-            EditRowWidget(text: 'log Out', imagePath: AppImages.logOutIcon),
-          ],
-        ),
+          SizedBox(height: 20.h),
+          EditRowWidget(
+            text: 'Courses History',
+            imagePath: AppImages.coursesHistoryIcon,
+          ),
+          SizedBox(height: 20.h),
+          EditRowWidget(text: 'Courses', imagePath: AppImages.coursesIcon),
+          SizedBox(height: 20.h),
+          EditRowWidget(
+            text: 'Change Password',
+            imagePath: AppImages.changePasswordIcon,
+          ),
+          SizedBox(height: 20.h),
+          EditRowWidget(text: 'log Out', imagePath: AppImages.logOutIcon),
+        ],
       ),
     );
   }

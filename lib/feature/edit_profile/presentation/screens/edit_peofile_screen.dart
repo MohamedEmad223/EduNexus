@@ -1,12 +1,12 @@
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/app_regex.dart';
 import 'package:edunexus/core/helper/helper_methods.dart';
+import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/core/widgets/text_form_feild.dart';
 import 'package:edunexus/feature/edit_profile/cubit/cubit/updateuser_cubit.dart';
 import 'package:edunexus/feature/edit_profile/presentation/widgets/image_container_widgets.dart';
-import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +26,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   void initState() {
     super.initState();
     updateuserCubit = context.read<UpdateuserCubit>();
-    
   }
 
   clear() {
@@ -59,11 +58,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 context,
                 "update success",
               );
-              Navigator.pushAndRemoveUntil(
+              Navigator.pushNamedAndRemoveUntil(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
-                ),
+                Routes.botNavBar,
                 (route) => false,
               );
             }

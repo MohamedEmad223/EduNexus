@@ -1,5 +1,6 @@
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
 import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,13 +70,16 @@ class CourseContainerWidgets extends StatelessWidget {
             Positioned(
               bottom: 0,
               right: 0,
-              child: CircleAvatar(
-                radius: 20.r,
-                backgroundColor: AppColor.whiteColor,
-                child: Icon(
-                  Icons.play_arrow,
-                  color: AppColor.primaryColor,
-                  size: 30.sp,
+              child: GestureDetector(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CoursePlayingScreen(CourseId:  allCoursesModel.sId??'',),)),
+                child: CircleAvatar(
+                  radius: 20.r,
+                  backgroundColor: AppColor.whiteColor,
+                  child: Icon(
+                    Icons.play_arrow,
+                    color: AppColor.primaryColor,
+                    size: 30.sp,
+                  ),
                 ),
               ),
             ),

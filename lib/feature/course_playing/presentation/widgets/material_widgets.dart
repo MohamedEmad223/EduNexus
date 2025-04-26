@@ -6,7 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MaterialWidgets extends StatelessWidget {
-  const MaterialWidgets({super.key});
+  final String summary;
+  const MaterialWidgets({super.key, required this.summary});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,8 @@ class MaterialWidgets extends StatelessWidget {
             style: TextStyle(fontSize: 12.sp, color: Colors.grey),
           ),
           SizedBox(height: 30.h),
-          Container(
+          if(summary.isEmpty) const Text('No materials uploaded yet!'),
+          if(summary.isNotEmpty) Container(
             width: double.infinity,
             height: 80.h,
             decoration: BoxDecoration(
@@ -62,13 +64,25 @@ class MaterialWidgets extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       icon: Icon(Icons.download, color: AppColor.primaryColor),
                     ),
                   ],
                 ),
               ],
             ),
+          ),
+          SizedBox(height: 20.h),
+          Text(
+            'Summary',
+            style: AppTextStyle.poppins20BoldblackColor,
+          ),
+          SizedBox(height: 8.h),
+          Text(
+            summary,
+            style: AppTextStyle.poppins14w300blackColor,
           ),
         ],
       ),

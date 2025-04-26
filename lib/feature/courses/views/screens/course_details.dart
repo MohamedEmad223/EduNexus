@@ -4,7 +4,6 @@ import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/views/widgets/add_to_cart_widgets.dart';
-import 'package:edunexus/feature/courses/views/widgets/row_course_details_widgets.dart';
 import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,19 +12,7 @@ class CourseDetails extends StatelessWidget {
   const CourseDetails({super.key, this.allCoursesModel});
   final AllCoursesModel? allCoursesModel;
 
-  void saveCourseId() {
-    CacheHelper().saveData(
-      key: AppConstants.courseId,
-      value: allCoursesModel?.sId,
-    );
-  }
 
-  void saveLessonsId() {
-    CacheHelper().saveData(
-      key: AppConstants.lessonId,
-      value: allCoursesModel!.lessons?[0],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,13 +91,11 @@ class CourseDetails extends StatelessWidget {
                       style: TextStyle(fontSize: 12.sp, color: Colors.grey),
                     ),
                     SizedBox(height: 30.h),
-                    RowCourseDetailsWidgets(
-                      isFinshed: true,
-                      index: '01',
-                      title:  allCoursesModel?.title ?? 'There is no title',
-                      time: '2h 30min',
-                      isPurshesed: true,
+                    Text(
+                      "Content",
+                      style: AppTextStyle.poppins20BoldblackColor,
                     ),
+                    SizedBox(height: 20.h),
                   ],
                 ),
               ),
