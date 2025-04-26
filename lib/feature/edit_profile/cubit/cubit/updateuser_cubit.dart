@@ -1,7 +1,7 @@
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/shared_pref_helper.dart';
-import 'package:edunexus/feature/edit_profile/presentation/screens/data/model/updata_user_model.dart';
-import 'package:edunexus/feature/edit_profile/presentation/screens/data/repos/update_user_repository.dart';
+import 'package:edunexus/feature/edit_profile/data/model/updata_user_model.dart';
+import 'package:edunexus/feature/edit_profile/data/repos/update_user_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
