@@ -1,4 +1,5 @@
 import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/feature/chat/data/gemini_services.dart';
 import 'package:edunexus/feature/chat/presentaion/widgets/chat_message.dart';
 import 'package:flutter/material.dart';
 
@@ -28,17 +29,20 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _getBotResponse(String userText) async {
-    // Simulate a delay for bot response
-    await Future.delayed(Duration(seconds: 1));
+  ChatMessage loadingMessage = ChatMessage(text: "Typing...", isUser: false);
 
-    String botResponse = _generateBotResponse(userText);
+  setState(() {
+    _messages.insert(0, loadingMessage);
+  });
 
-    ChatMessage botMessage = ChatMessage(text: botResponse, isUser: false);
+  String botResponse = await GeminiService.sendMessage(userText);
 
-    setState(() {
-      _messages.insert(0, botMessage);
-    });
-  }
+  setState(() {
+    _messages.removeAt(0); // Remove the "Typing..." message
+    _messages.insert(0, ChatMessage(text: botResponse, isUser: false));
+  });
+}
+
 
   String _generateBotResponse(String userText) {
     userText = userText.toLowerCase();

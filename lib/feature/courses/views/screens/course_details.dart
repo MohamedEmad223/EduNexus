@@ -1,6 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:edunexus/core/helper/app_constants.dart';
-import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/views/widgets/add_to_cart_widgets.dart';
