@@ -44,16 +44,6 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 
-  String _generateBotResponse(String userText) {
-    userText = userText.toLowerCase();
-    if (userText.contains('hello') || userText.contains('hi')) {
-      return 'Hi there! How can I assist you today?';
-    } else if (userText.contains('how are you')) {
-      return "I'm doing great, thanks for asking! How about you?";
-    } else {
-      return 'Interesting! Tell me more about that.';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
