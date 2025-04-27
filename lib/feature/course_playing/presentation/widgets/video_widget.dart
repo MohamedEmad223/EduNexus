@@ -12,27 +12,41 @@ class VideoWidget extends StatefulWidget {
   State<VideoWidget> createState() => _VideoWidgetState();
 }
 
-class _VideoWidgetState extends State<VideoWidget> {
+class _VideoWidgetState extends State<VideoWidget> with WidgetsBindingObserver {
   late FlickManager flickManager;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
 
     final path = widget.allLessonsModel.lessons?[0].path;
 
     flickManager = FlickManager(
       videoPlayerController: VideoPlayerController.network(
-        path ??
-            'https://res.cloudinary.com/placeholder/video/upload/v0000000000/default.mp4', // fallback
+        path ?? 'https://res.cloudinary.com/placeholder/video/upload/v0000000000/default.mp4',
       ),
     );
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+
+    // 👇 PAUSE the video manually before dispose
+    flickManager.flickControlManager?.pause(); 
+
     flickManager.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused) {
+      flickManager.flickControlManager?.pause();
+    }
+    super.didChangeAppLifecycleState(state);
   }
 
   @override

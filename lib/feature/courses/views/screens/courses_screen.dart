@@ -1,14 +1,11 @@
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
-import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
-import 'package:edunexus/feature/courses/cubit/cubit/courses_all_lessons_cubit.dart';
 import 'package:edunexus/feature/courses/views/widgets/course_container_widgets.dart';
 import 'package:edunexus/feature/courses/views/widgets/learned_today_container.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class CoursesScreen extends StatelessWidget {
   const CoursesScreen({super.key});

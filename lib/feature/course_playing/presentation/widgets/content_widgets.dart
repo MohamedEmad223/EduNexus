@@ -49,25 +49,19 @@ class ContentWidgets extends StatelessWidget {
           ),
           SizedBox(height: 30.h),
           RowCourseDetailsWidgets(
-            isFinshed: true,
+            isFinshed: false,
             index: '01',
             title: 'Introduction to Product Design',
-            time: '2h 30min',
-            isPurshesed: true,
-          ),
-          SizedBox(height: 20.h),
-          RowCourseDetailsWidgets(
-            isFinshed: false,
-            index: '02',
-            title: 'Quiz',
-            time: '2h ',
+            time: '2:32 Min',
             isPurshesed: true,
           ),
           SizedBox(height: 20.h),
 
+          SizedBox(height: 20.h),
+
           InkWell(
             onTap: () {
-              Navigator.pushAndRemoveUntil(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder:
@@ -76,14 +70,13 @@ class ContentWidgets extends StatelessWidget {
                         child: QuestionsScreen(),
                       ),
                 ),
-                (route) => false,
               );
             },
             child: RowCourseDetailsWidgets(
-              isFinshed: true,
-              index: '03',
-              title: 'Introduction to Product Design',
-              time: '2h 30min',
+              isFinshed: false,
+              index: '02',
+              title: 'Quiz',
+              time: '15 min',
               isPurshesed: false,
             ),
           ),

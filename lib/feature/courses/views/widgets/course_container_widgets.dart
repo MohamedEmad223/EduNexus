@@ -66,23 +66,33 @@ class CourseContainerWidgets extends StatelessWidget {
                 ),
               ],
             ),
-
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CoursePlayingScreen(CourseId:  allCoursesModel.sId??'',),)),
-                child: CircleAvatar(
-                  radius: 20.r,
-                  backgroundColor: AppColor.whiteColor,
-                  child: Icon(
-                    Icons.play_arrow,
-                    color: AppColor.primaryColor,
-                    size: 30.sp,
+            if (allCoursesModel.lessons != null &&
+                allCoursesModel.lessons!.isNotEmpty)
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: GestureDetector(
+                  onTap:
+                      () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (context) => CoursePlayingScreen(
+                                CourseId: allCoursesModel.sId ?? '',
+                              ),
+                        ),
+                      ),
+                  child: CircleAvatar(
+                    radius: 20.r,
+                    backgroundColor: AppColor.whiteColor,
+                    child: Icon(
+                      Icons.play_arrow,
+                      color: AppColor.primaryColor,
+                      size: 30.sp,
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),

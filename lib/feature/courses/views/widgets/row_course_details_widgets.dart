@@ -78,7 +78,7 @@ class _RowCourseDetailsWidgetsState extends State<RowCourseDetailsWidgets> {
                   : AppColor.primaryColor,
           child:
               widget.isPurshesed
-                  ? Icon(Icons.play_arrow, color: Colors.white, size: 30.sp)
+                  ? Icon(Icons.pause, color: Colors.white, size: 30.sp)
                   : Icon(Icons.quiz, color: Colors.white, size: 25.sp),
         ),
       ],
