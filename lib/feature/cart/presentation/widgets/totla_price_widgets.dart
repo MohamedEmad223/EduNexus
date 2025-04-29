@@ -1,5 +1,6 @@
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
+import 'package:edunexus/feature/payment/presentation/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,7 +58,7 @@ class TotalPriceWidget extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CheckoutScreen(),
+                          builder: (context) => const PaymentScreen(),
                         ),
                       );
                     },
@@ -83,17 +84,4 @@ class TotalPriceWidget extends StatelessWidget {
   }
 }
 
-class CheckoutScreen extends StatelessWidget {
-  const CheckoutScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Checkout'),
-        backgroundColor: AppColor.backGroundColor,
-      ),
-      body: const Center(child: Text('Checkout process to be implemented')),
-    );
-  }
-}
