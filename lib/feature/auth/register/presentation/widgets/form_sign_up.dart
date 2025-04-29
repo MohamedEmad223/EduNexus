@@ -145,6 +145,10 @@ class _FormSignUpState extends State<FormSignUp> {
                       key: 'name',
                       value: signupCubit.nameController.text,
                     );
+                    CacheHelper().saveData(
+                      key: 'email',
+                      value: signupCubit.emailController.text,
+                    );
                   }
                 },
                 color: AppColor.primaryColor,
