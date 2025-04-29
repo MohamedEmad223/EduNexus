@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
-import 'package:edunexus/feature/courses/views/widgets/add_to_cart_widgets.dart';
 import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,8 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CourseDetails extends StatelessWidget {
   const CourseDetails({super.key, this.allCoursesModel});
   final AllCoursesModel? allCoursesModel;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -90,16 +87,18 @@ class CourseDetails extends StatelessWidget {
                     ),
                     SizedBox(height: 30.h),
                     Text(
-                      "Content",
+                      "Catregory",
                       style: AppTextStyle.poppins20BoldblackColor,
                     ),
                     SizedBox(height: 20.h),
+                    Text(
+                      allCoursesModel?.category ?? 'There is no description',
+                      style: TextStyle(fontSize: 12.sp, color: Colors.grey),
+                    ),
                   ],
                 ),
               ),
             ),
-
-            AddToCartWidgets(),
           ],
         ),
       ),

@@ -11,11 +11,9 @@ import 'package:edunexus/feature/notification/presentation/screens/notificatios_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,6 @@ class HomeScreen extends StatelessWidget {
             );
           } else if (state is HomeSuccess) {
             final courses = state.allCoursesList;
-
             return SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
@@ -94,19 +91,52 @@ class HomeScreen extends StatelessWidget {
                                 ),
                             itemBuilder: (context, index) {
                               final course = courses[index];
-                              return GrideViewCousre(
-                                course: course,
-                                onPressed: () {
-                                  PersistentNavBarNavigator.pushNewScreen(
-                                    context,
-                                    screen: CourseDetails(
-                                      allCoursesModel: course,
+                              final isInCart = context
+                                  .watch<HomeCubit>()
+                                  .isInCart(course);
+
+                              return Stack(
+                                children: [
+                                  GrideViewCousre(
+                                    course: course,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder:
+                                              (context) => CourseDetails(
+                                                allCoursesModel: course,
+                                              ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  Positioned(
+                                    right: 8,
+                                    bottom: 8,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            isInCart
+                                                ? Colors.red
+                                                : AppColor.primaryColor,
+                                        minimumSize: Size(20.w, 36.h),
+                                      ),
+                                      onPressed: () {
+                                        BlocProvider.of<HomeCubit>(
+                                          context,
+                                        ).toggleCartCourse(course);
+                                      },
+                                      child: Text(
+                                        isInCart ? 'Remove' : 'Add to Cart',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
                                     ),
-                                    withNavBar: false,
-                                    pageTransitionAnimation:
-                                        PageTransitionAnimation.cupertino,
-                                  );
-                                },
+                                  ),
+                                ],
                               );
                             },
                           ),
@@ -116,12 +146,10 @@ class HomeScreen extends StatelessWidget {
               ),
             );
           } else {
-            return const SizedBox();
+            return const Center(child: Text('Please wait...'));
           }
         },
       ),
     );
   }
 }
-
-// Skeleton widget

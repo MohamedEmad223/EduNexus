@@ -17,6 +17,7 @@ import 'package:edunexus/feature/edit_profile/cubit/cubit/updateuser_cubit.dart'
 import 'package:edunexus/feature/edit_profile/data/repos/update_user_repository.dart';
 import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:edunexus/feature/home/data/repos/all_courses_repo.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
@@ -95,7 +96,6 @@ class AppRoutes {
                         (context) =>
                             UpdateuserCubit(UpdateUserRepository(dioHandler)),
                   ),
-
                 ],
                 child: const BottomNavBar(),
               ),
@@ -109,7 +109,15 @@ class AppRoutes {
               ),
         );
       case Routes.courseDetails:
-        return CustomPageRoute(builder: (context) => const CourseDetails());
+        final course = routeSettings.arguments as AllCoursesModel;
+        return CustomPageRoute(
+          builder:
+              (context) => BlocProvider.value(
+                value: BlocProvider.of<HomeCubit>(context),
+                child: CourseDetails(allCoursesModel: course),
+              ),
+        );
+
       case Routes.leaderBoard:
         return CustomPageRoute(builder: (context) => const LeaderBoardScreen());
       case Routes.resultScreen:
@@ -140,9 +148,7 @@ class AppRoutes {
       case Routes.chatScreen:
         return CustomPageRoute(builder: (context) => const ChatScreen());
       case Routes.coursePlaying:
-        return CustomPageRoute(
-          builder: (context) =>  CoursePlayingScreen(),
-        );
+        return CustomPageRoute(builder: (context) => CoursePlayingScreen());
     }
     return null;
   }
