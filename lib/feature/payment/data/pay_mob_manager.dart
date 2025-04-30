@@ -2,94 +2,102 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:edunexus/core/helper/app_constants.dart';
-import 'package:edunexus/core/helper/shared_pref_helper.dart';
 
 class PayMobManager {
   final dio = Dio();
-
-  Future<String> getToken() async {
+  Future<String> getPaymentKey(int amount, String currency) async {
     try {
-      Response response = await dio.post(
-        'https://accept.paymob.com/api/auth/tokens',
-        data: {"api_key": AppConstants.apiKey},
+      String authenticationToken = await _getAuthenticationToken();
+      int orderId = await _getOrderId(
+        authanticationToken: authenticationToken,
+        amount: (amount * 100).toString(),
+        currency: currency,
       );
-      return response.data['token'];
-    } catch (e) {
-      log('Error: ${e.toString()}');
-      throw Exception('Failed to retrieve token');
-    }
-  }
-
-  Future<String> getOrderId({
-    required String token,
-    required String amount,
-  }) async {
-    try {
-      Response response = await dio.post(
-        'https://accept.paymob.com/api/ecommerce/orders',
-        data: {
-          "auth_token": token,
-          "delivery_needed": "true",
-          "amount_cents": amount,
-          "currency": "EGP",
-          "items": [],
-        },
-      );
-      return response.data['id'];
-    } catch (e) {
-      log('Error: ${e.toString()}');
-      throw Exception('Failed to retrieve order ID');
-    }
-  }
-
-  Future<String> getPaymentKey({
-    required String token,
-    required String orderId,
-    required String amount,
-  }) async {
-    
-    
-    Response response = await dio.post(
-      'https://accept.paymob.com/api/acceptance/payment_keys',
-      data: {
-        "auth_token": token,
-        "amount_cents": "100",
-        "expiration": 3600,
-        "order_id": orderId,
-        "integration_id": 4539675,
-        "billing_data": {
-          "apartment": "803",
-          "email": CacheHelper().getData(key: 'email'),
-          "floor": "NA",
-          "first_name": CacheHelper().getData(key: 'name'),
-          "street": "NA",
-          "building": "12",
-          "phone_number": "01000000000",
-          "shipping_method": "PKG",
-          "postal_code": "12345",
-          "city": "Cairo",
-          "country": "Egypt",
-          "last_name": "Ali",
-          "state": "Cairo",
-        },
-      },
-    );
-    return response.data['token'];
-  }
-
-  Future<String> patWithPayMob(int amount) async {
-    try {
-      String token = await getToken();
-      String orderId = await getOrderId(token: token, amount: (100 * amount).toString());
-      String paymentKey = await getPaymentKey(
-        token: token,
+      String paymentKey = await _getPaymentKey(
+        authanticationToken: authenticationToken,
+        amount: (amount * 100).toString(),
         orderId: orderId.toString(),
-        amount: (100 * amount).toString(),
+        currency: currency,
       );
       return paymentKey;
     } catch (e) {
-      log('Error: ${e.toString()}');
-      throw Exception('Failed to process payment');
+      log(e.toString());
+      throw Exception('Failed to get payment key');
     }
+  }
+
+  Future<String> _getAuthenticationToken() async {
+    final Response response = await dio.post(
+      'https://accept.paymob.com/api/auth/tokens',
+      data: {"api_key": AppConstants.apiKey},
+    );
+
+    if (response.statusCode == 200) {
+      return response.data['token'];
+    } else {
+      throw Exception('Failed to get authentication token');
+    }
+  }
+
+  Future<int> _getOrderId({
+    required String authanticationToken,
+    required String amount,
+    required String currency,
+  }) async {
+    final Response response = await Dio().post(
+      "https://accept.paymob.com/api/ecommerce/orders",
+      data: {
+        "auth_token": authanticationToken,
+        "amount_cents": amount, //  >>(STRING)<<
+        "currency": currency, //Not Req
+        "delivery_needed": "false",
+        "items": [],
+      },
+    );
+    return response.data["id"]; //INTGER
+  }
+
+  Future<String> _getPaymentKey({
+    required String authanticationToken,
+    required String orderId,
+    required String amount,
+    required String currency,
+  }) async {
+    final Response response = await Dio().post(
+      "https://accept.paymob.com/api/acceptance/payment_keys",
+      data: {
+        //ALL OF THEM ARE REQIERD
+        "expiration": 3600,
+
+        "auth_token": authanticationToken, //From First Api
+        "order_id": orderId, //From Second Api  >>(STRING)<<
+        "integration_id":
+            AppConstants
+                .cardPaymentMethodIntegrationId, //Integration Id Of The Payment Method
+
+        "amount_cents": amount,
+        "currency": currency,
+
+        "billing_data": {
+          //Have To Be Values
+          "first_name": "Clifford",
+          "last_name": "Nicolas",
+          "email": "claudette09@exa.com",
+          "phone_number": "+86(8)9135210487",
+
+          //Can Set "NA"
+          "apartment": "NA",
+          "floor": "NA",
+          "street": "NA",
+          "building": "NA",
+          "shipping_method": "NA",
+          "postal_code": "NA",
+          "city": "NA",
+          "country": "EG",
+          "state": "NA",
+        },
+      },
+    );
+    return response.data["token"];
   }
 }

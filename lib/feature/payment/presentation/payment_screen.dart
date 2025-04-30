@@ -1,4 +1,3 @@
-import 'package:edunexus/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 class PaymentScreen extends StatelessWidget {
@@ -7,11 +6,15 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Checkout'),
-        backgroundColor: AppColor.backGroundColor,
+        title: Text('Payment'),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
-      body: const Center(child: Text('Checkout process to be implemented')),
+      body: Center(child: Text('Payment Screen')),
     );
   }
+
+    
 }

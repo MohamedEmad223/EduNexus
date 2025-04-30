@@ -36,4 +36,10 @@ class HomeCubit extends Cubit<HomeState> {
   bool isInCart(AllCoursesModel course) {
     return cartCourses.contains(course);
   }
+
+  void clearCart() {
+  cartCourses.clear();
+  emit(HomeSuccess(allCoursesList: allCoursesList));
+}
+
 }
