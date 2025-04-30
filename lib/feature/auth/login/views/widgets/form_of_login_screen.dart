@@ -136,6 +136,10 @@ class _FormOfLoginScreenState extends State<FormOfLoginScreen> {
                         'password': loginCubit.passwordController.text,
                       });
                     }
+                    CacheHelper().saveData(
+                      key: 'email',
+                      value: loginCubit.emailController.text,
+                    );
                   },
                   color: AppColor.primaryColor,
                   textColor: Colors.white,
