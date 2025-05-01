@@ -2,6 +2,7 @@ import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
+import 'package:edunexus/core/widgets/org_nav_bar.dart';
 import 'package:edunexus/feature/auth/login/cubit/cubit/login_cubit.dart';
 import 'package:edunexus/feature/auth/login/data/repo/login_repository.dart';
 import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
@@ -11,6 +12,8 @@ import 'package:edunexus/feature/auth/register/presentation/screens/register_scr
 import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
 import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
 import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
+import 'package:edunexus/feature/courses/cubit/cubit/cubit/my_course_cubit.dart';
+import 'package:edunexus/feature/courses/data/repo/my_courses_repo.dart';
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/edit_profile/cubit/cubit/updateuser_cubit.dart';
@@ -96,6 +99,12 @@ class AppRoutes {
                         (context) =>
                             UpdateuserCubit(UpdateUserRepository(dioHandler)),
                   ),
+                  BlocProvider(
+                    create:
+                        (context) =>
+                            MyCourseCubit(MyCoursesRepo(dioHandler))
+                              ..getMyCourses(AppConstants.myCourses),
+                  ),
                 ],
                 child: const BottomNavBar(),
               ),
@@ -143,6 +152,26 @@ class AppRoutes {
               (context) => BlocProvider(
                 create: (context) => QuizCubit(),
                 child: const QuestionsScreen(),
+              ),
+        );
+      case Routes.orgnavBar:
+        return CustomPageRoute(
+          builder:
+              (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create:
+                        (context) =>
+                            UpdateuserCubit(UpdateUserRepository(dioHandler)),
+                  ),
+                  BlocProvider(
+                    create:
+                        (context) =>
+                            MyCourseCubit(MyCoursesRepo(dioHandler))
+                              ..getMyCourses(AppConstants.myCourses),
+                  ),
+                ],
+                child: const orgnizationBottomNavBar(),
               ),
         );
       case Routes.chatScreen:

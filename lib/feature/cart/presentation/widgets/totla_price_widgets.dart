@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/helper_methods.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/feature/cart/cubit/courseenroll_cubit.dart';
 import 'package:edunexus/feature/cart/presentation/widgets/cart_container_widgets.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
@@ -58,13 +60,17 @@ class CartScreen extends StatelessWidget {
   }
 }
 
-class TotalPriceWidget extends StatelessWidget {
+class TotalPriceWidget extends StatefulWidget {
   const TotalPriceWidget({super.key});
 
   @override
+  State<TotalPriceWidget> createState() => _TotalPriceWidgetState();
+}
+
+class _TotalPriceWidgetState extends State<TotalPriceWidget> {
+  @override
   Widget build(BuildContext context) {
     final cartItems = context.watch<HomeCubit>().cartCourses;
-    // Calculate total price; assuming AllCoursesModel has a 'price' property as a double
     final totalPrice = cartItems.fold<double>(
       0.0,
       (sum, course) => sum + (course.price ?? 0.0),
@@ -108,6 +114,15 @@ class TotalPriceWidget extends StatelessWidget {
                 cartItems.isEmpty
                     ? null
                     : () {
+                      final enrollCubit = context.read<CourseenrollCubit>();
+                      final cartCourses = context.read<HomeCubit>().cartCourses;
+
+                      for (final course in cartCourses) {
+                        enrollCubit.enrollCourses(
+                          AppConstants.genrollCourseContent(course.sId!),
+                        );
+                      }
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(

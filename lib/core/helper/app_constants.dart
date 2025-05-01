@@ -15,6 +15,12 @@ class AppConstants {
     return 'courses/$courseId/lessons';
   }
 
+  static String genrollCourseContent(String courseId) {
+    return 'courses/$courseId/enroll';
+  }
+
+  static const String myCourses = 'courses/mycourses';
+
   static const String onlineCardIdIntegrationId = '4125487';
   static const String mobileWalletIntegrationId = '5074299';
 

@@ -1,4 +1,5 @@
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
@@ -32,6 +33,14 @@ class HomeScreen extends StatelessWidget {
             );
           } else if (state is HomeSuccess) {
             final courses = state.allCoursesList;
+            CacheHelper().saveData(
+              key: 'id',
+              value:
+                  courses
+                      .map((course) => course.sId ?? 'Unknown')
+                      .toSet()
+                      .toList(),
+            );
             return SafeArea(
               child: SingleChildScrollView(
                 child: Padding(

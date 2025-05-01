@@ -56,14 +56,6 @@ class CourseContainerWidgets extends StatelessWidget {
                     fontSize: 12.sp,
                   ),
                 ),
-                SizedBox(height: 25.h),
-                Text(
-                  '14/${allCoursesModel.lessons?.length} ',
-                  style: AppTextStyle.poppins18w500lightBlackColor.copyWith(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20.sp,
-                  ),
-                ),
               ],
             ),
             if (allCoursesModel.lessons != null &&
@@ -79,6 +71,7 @@ class CourseContainerWidgets extends StatelessWidget {
                           builder:
                               (context) => CoursePlayingScreen(
                                 CourseId: allCoursesModel.sId ?? '',
+                                allCoursesModel: allCoursesModel,
                               ),
                         ),
                       ),

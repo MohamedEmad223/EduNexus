@@ -7,13 +7,18 @@ class LoginRepository {
   final ApiServices _apiServices;
   LoginRepository(this._apiServices);
 
-  Future<Either<String,LoginModel>> login(String path, Map<String, dynamic> data) async {
+  Future<Either<String, LoginModel>> login(
+    String path,
+    Map<String, dynamic> data,
+  ) async {
     try {
       var response = await _apiServices.post(path, data: data);
       var result = LoginModel.fromJson(response);
       return Right(result);
     } on ApiException catch (e) {
-      return Left(e.toString());
+      return Left(e.errorModel.message ?? 'An unknown error occurred');
+    } catch (e) {
+      return Left('An unknown error occurred: $e');
     }
   }
 }

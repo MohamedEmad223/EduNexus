@@ -42,7 +42,7 @@ class InformationContainerSettings extends StatelessWidget {
                     style: AppTextStyle.poppins16w400blackColor,
                   ),
                   Text(
-                    CacheHelper().getData(key: 'email') ?? "uyu",
+                    CacheHelper().getData(key: 'email') ?? "uK",
                     style: AppTextStyle.poppins14w300blackColor,
                   ),
                 ],

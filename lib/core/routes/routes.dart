@@ -17,4 +17,5 @@ class Routes {
   static const String questoinScreen = '/questionScreen';
   static const String chatScreen = '/chatScreen';
   static const String coursePlaying = '/coursePlaying';
+  static const String orgnavBar='/orgnavBar';
 }

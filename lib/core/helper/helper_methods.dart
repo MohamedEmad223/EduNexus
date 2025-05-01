@@ -33,6 +33,70 @@ class HelperMethods {
     );
   }
 
+  static Future<Widget?> showAlertDialog(context) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder:
+          (context) => PopScope(
+            canPop: true,
+            child: AbsorbPointer(
+              absorbing: true,
+              child: AlertDialog.adaptive(
+                contentPadding: EdgeInsets.zero,
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                content: SizedBox(
+                  height: 200.h,
+                  width: 100.w,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.w,
+                      vertical: 20.h,
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Do you want to Log Out?",
+                          style: AppTextStyle.poppins16w400blackColor,
+                        ),
+
+                        SizedBox(height: 20.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "Cancel",
+                                style: AppTextStyle.poppins16w400blackColor,
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "Log Out",
+                                style: AppTextStyle.poppins16w400blackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+    );
+  }
+
   static void showCustomSnackBarSuccess(BuildContext context, String title) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

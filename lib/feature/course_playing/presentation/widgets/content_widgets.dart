@@ -1,13 +1,25 @@
 import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/courses/views/widgets/quiz_row_course_details_widgets.dart';
 import 'package:edunexus/feature/courses/views/widgets/row_course_details_widgets.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:edunexus/feature/questions/cubit/cubit/quiz_cubit.dart';
 import 'package:edunexus/feature/questions/presentation/screens/questions_screen.dart';
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ContentWidgets extends StatelessWidget {
-  const ContentWidgets({super.key});
+  final bool isVideoFinished;
+  final FlickManager flickManager;
+  final AllCoursesModel? allCoursesModel;
+
+  const ContentWidgets({
+    super.key,
+    required this.isVideoFinished,
+    required this.flickManager,
+    this.allCoursesModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +37,7 @@ class ContentWidgets extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Product Design v1.0',
+                allCoursesModel?.title ?? 'No title',
                 style: AppTextStyle.poppins20BoldblackColor,
               ),
             ],
@@ -49,12 +61,14 @@ class ContentWidgets extends StatelessWidget {
           ),
           SizedBox(height: 30.h),
           RowCourseDetailsWidgets(
-            isFinshed: false,
+            isFinshed: isVideoFinished,
             index: '01',
-            title: 'Introduction to Product Design',
+            title:allCoursesModel!.title?? 'No title',
             time: '2:32 Min',
             isPurshesed: true,
+            flickManager: flickManager,
           ),
+
           SizedBox(height: 20.h),
 
           SizedBox(height: 20.h),
@@ -72,7 +86,7 @@ class ContentWidgets extends StatelessWidget {
                 ),
               );
             },
-            child: RowCourseDetailsWidgets(
+            child: QuizRowCourseDetailsWidgets(
               isFinshed: false,
               index: '02',
               title: 'Quiz',

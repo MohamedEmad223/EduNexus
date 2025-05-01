@@ -6,14 +6,15 @@ class CacheHelper {
   static late FlutterSecureStorage flutterSecureStorage;
 
   init() async {
-    AndroidOptions getAndroidOptions() => const AndroidOptions(
-          encryptedSharedPreferences: true,
-        );
+    AndroidOptions getAndroidOptions() =>
+        const AndroidOptions(encryptedSharedPreferences: true);
     IOSOptions getIOSOptions() =>
         const IOSOptions(accessibility: KeychainAccessibility.first_unlock);
     sharedPreferences = await SharedPreferences.getInstance();
     flutterSecureStorage = FlutterSecureStorage(
-        aOptions: getAndroidOptions(), iOptions: getIOSOptions());
+      aOptions: getAndroidOptions(),
+      iOptions: getIOSOptions(),
+    );
   }
 
   String? getDataString({required String key}) {
@@ -23,18 +24,21 @@ class CacheHelper {
   Future<bool> saveData({required String key, required dynamic value}) async {
     if (value is bool) {
       return await sharedPreferences.setBool(key, value);
-    }
-
-    if (value is String) {
+    } else if (value is String) {
       return await sharedPreferences.setString(key, value);
-    }
-
-    if (value is int) {
+    } else if (value is int) {
       return await sharedPreferences.setInt(key, value);
-    } else {
+    } else if (value is double) {
       return await sharedPreferences.setDouble(key, value);
+    } else if (value is List<String>) {
+      return await sharedPreferences.setStringList(key, value);
+    } else {
+      throw UnsupportedError('Type ${value.runtimeType} is not supported');
     }
   }
+  List<String>? getDataStringList({required String key}) {
+  return sharedPreferences.getStringList(key);
+}
 
   dynamic getData({required String key}) {
     return sharedPreferences.get(key);
@@ -44,8 +48,10 @@ class CacheHelper {
     return await flutterSecureStorage.read(key: key);
   }
 
-  Future<void> saveSecuredData(
-      {required String key, required String value}) async {
+  Future<void> saveSecuredData({
+    required String key,
+    required String value,
+  }) async {
     return await flutterSecureStorage.write(key: key, value: value);
   }
 

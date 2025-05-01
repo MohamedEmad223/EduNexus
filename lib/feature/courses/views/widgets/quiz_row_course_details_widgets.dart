@@ -1,60 +1,64 @@
 import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_color.dart';
-import 'package:edunexus/core/theme/app_text_style.dart' show AppTextStyle;
-import 'package:flick_video_player/flick_video_player.dart';
+import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:video_player/video_player.dart';
 
-class RowCourseDetailsWidgets extends StatelessWidget {
-  const RowCourseDetailsWidgets({
+class QuizRowCourseDetailsWidgets extends StatefulWidget {
+  const QuizRowCourseDetailsWidgets({
     super.key,
     required this.index,
     required this.title,
     required this.time,
     required this.isFinshed,
     required this.isPurshesed,
-    required this.flickManager,
   });
-
   final String index;
   final String title;
   final String time;
   final bool isFinshed;
   final bool isPurshesed;
-  final FlickManager flickManager;
 
   @override
-  Widget build(BuildContext context) {
-    final controller = flickManager.flickVideoManager?.videoPlayerController;
+  State<QuizRowCourseDetailsWidgets> createState() =>
+      _RowCourseDetailsWidgetsState();
+}
 
+class _RowCourseDetailsWidgetsState extends State<QuizRowCourseDetailsWidgets> {
+  @override
+  Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Index number
         Text(
-          index,
+          widget.index,
           style: AppTextStyle.poppins12w400lightdarkGreyColor.copyWith(
             fontSize: 24.sp,
             fontWeight: FontWeight.w700,
           ),
         ),
         SizedBox(width: 10.w),
+
+        // Done icon (conditionally visible)
         Visibility(
-          visible: isFinshed,
+          visible: widget.isFinshed,
           maintainSize: true,
           maintainAnimation: true,
           maintainState: true,
           child: Image.asset(AppImages.doneIcone, width: 20.w, height: 20.h),
         ),
         SizedBox(width: 10.w),
+
+        // Title & time
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: TextStyle(fontSize: 14.sp)),
+              Text(widget.title, style: TextStyle(fontSize: 14.sp)),
               SizedBox(height: 4.h),
               Text(
-                time,
+                widget.time,
                 style: AppTextStyle.poppins12greyColor.copyWith(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
@@ -64,31 +68,19 @@ class RowCourseDetailsWidgets extends StatelessWidget {
             ],
           ),
         ),
-        if (controller != null)
-          ValueListenableBuilder<VideoPlayerValue>(
-            valueListenable: controller,
-            builder: (context, value, child) {
-              final isPlaying = value.isPlaying;
-              return GestureDetector(
-                onTap: () {
-                  if (isPlaying) {
-                    flickManager.flickControlManager?.pause();
-                  } else {
-                    flickManager.flickControlManager?.play();
-                  }
-                },
-                child: CircleAvatar(
-                  radius: 20.r,
-                  backgroundColor: AppColor.primaryColor,
-                  child: Icon(
-                    isPlaying ? Icons.pause : Icons.play_arrow,
-                    color: Colors.white,
-                    size: 25.sp,
-                  ),
-                ),
-              );
-            },
-          ),
+
+        // Play icon
+        CircleAvatar(
+          radius: 20.r,
+          backgroundColor:
+              widget.isPurshesed
+                  ? AppColor.primaryColor
+                  : AppColor.primaryColor,
+          child:
+              widget.isPurshesed
+                  ? Icon(Icons.pause, color: Colors.white, size: 30.sp)
+                  : Icon(Icons.quiz, color: Colors.white, size: 25.sp),
+        ),
       ],
     );
   }
