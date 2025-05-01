@@ -1,3 +1,4 @@
+
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/app_regex.dart';
 import 'package:edunexus/core/helper/helper_methods.dart';
@@ -144,6 +145,10 @@ class _FormSignUpState extends State<FormSignUp> {
                     CacheHelper().saveData(
                       key: 'name',
                       value: signupCubit.nameController.text,
+                    );
+                    CacheHelper().saveData(
+                      key: 'email',
+                      value: signupCubit.emailController.text,
                     );
                   }
                 },

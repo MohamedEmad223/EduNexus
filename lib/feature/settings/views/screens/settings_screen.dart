@@ -1,4 +1,6 @@
+import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/app_images.dart';
+import 'package:edunexus/core/helper/shared_pref_helper.dart' show CacheHelper;
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/edit_profile/cubit/cubit/updateuser_cubit.dart';
@@ -24,7 +26,7 @@ class SettingsScreen extends StatelessWidget {
       body: Column(
         children: [
           InformationContainerSettings(),
-          SizedBox(height: 50.h),
+          SizedBox(height: 200.h),
           EditRowWidget(
             text: 'Edit Profile',
             imagePath: AppImages.editIcon,
@@ -45,19 +47,57 @@ class SettingsScreen extends StatelessWidget {
             },
           ),
           SizedBox(height: 20.h),
+
           EditRowWidget(
-            text: 'Courses History',
-            imagePath: AppImages.coursesHistoryIcon,
+            text: 'log Out',
+            imagePath: AppImages.logOutIcon,
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder:
+                    (context) => Center(
+                      child: AlertDialog(
+                        content: const Text('Do you want to log out?'),
+                        actions: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red,
+                                ),
+                                onPressed:
+                                    () => Navigator.pop(context), // Cancel
+                                child: const Text(
+                                  'Cancel',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  CacheHelper().deleteSecuredData(
+                                    key: AppConstants.token,
+                                  );
+                                  CacheHelper().deleteSecuredData(key: 'name');
+                                  CacheHelper().deleteSecuredData(key: 'email');
+                                  CacheHelper().deleteSecuredData(
+                                    key: 'userId',
+                                  );
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    '/login',
+                                  );
+                                },
+                                child: const Text('Yes'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+              );
+            },
           ),
-          SizedBox(height: 20.h),
-          EditRowWidget(text: 'Courses', imagePath: AppImages.coursesIcon),
-          SizedBox(height: 20.h),
-          EditRowWidget(
-            text: 'Change Password',
-            imagePath: AppImages.changePasswordIcon,
-          ),
-          SizedBox(height: 20.h),
-          EditRowWidget(text: 'log Out', imagePath: AppImages.logOutIcon),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/routes/routes.dart';
 import 'package:edunexus/core/widgets/bottom_navigaton_bar.dart';
+import 'package:edunexus/core/widgets/org_nav_bar.dart';
 import 'package:edunexus/feature/auth/login/cubit/cubit/login_cubit.dart';
 import 'package:edunexus/feature/auth/login/data/repo/login_repository.dart';
 import 'package:edunexus/feature/auth/login/views/screens/login_screen.dart';
@@ -11,12 +12,15 @@ import 'package:edunexus/feature/auth/register/presentation/screens/register_scr
 import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
 import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
 import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
+import 'package:edunexus/feature/courses/cubit/cubit/cubit/my_course_cubit.dart';
+import 'package:edunexus/feature/courses/data/repo/my_courses_repo.dart';
 import 'package:edunexus/feature/courses/views/screens/course_details.dart';
 import 'package:edunexus/feature/courses/views/screens/courses_screen.dart';
 import 'package:edunexus/feature/edit_profile/cubit/cubit/updateuser_cubit.dart';
 import 'package:edunexus/feature/edit_profile/data/repos/update_user_repository.dart';
 import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:edunexus/feature/home/data/repos/all_courses_repo.dart';
 import 'package:edunexus/feature/home/view/screens/home_screen.dart';
 import 'package:edunexus/feature/leaderboard/presentation/screens/leader_board_screen.dart';
@@ -95,7 +99,12 @@ class AppRoutes {
                         (context) =>
                             UpdateuserCubit(UpdateUserRepository(dioHandler)),
                   ),
-
+                  BlocProvider(
+                    create:
+                        (context) =>
+                            MyCourseCubit(MyCoursesRepo(dioHandler))
+                              ..getMyCourses(AppConstants.myCourses),
+                  ),
                 ],
                 child: const BottomNavBar(),
               ),
@@ -109,7 +118,15 @@ class AppRoutes {
               ),
         );
       case Routes.courseDetails:
-        return CustomPageRoute(builder: (context) => const CourseDetails());
+        final course = routeSettings.arguments as AllCoursesModel;
+        return CustomPageRoute(
+          builder:
+              (context) => BlocProvider.value(
+                value: BlocProvider.of<HomeCubit>(context),
+                child: CourseDetails(allCoursesModel: course),
+              ),
+        );
+
       case Routes.leaderBoard:
         return CustomPageRoute(builder: (context) => const LeaderBoardScreen());
       case Routes.resultScreen:
@@ -137,12 +154,30 @@ class AppRoutes {
                 child: const QuestionsScreen(),
               ),
         );
+      case Routes.orgnavBar:
+        return CustomPageRoute(
+          builder:
+              (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create:
+                        (context) =>
+                            UpdateuserCubit(UpdateUserRepository(dioHandler)),
+                  ),
+                  BlocProvider(
+                    create:
+                        (context) =>
+                            MyCourseCubit(MyCoursesRepo(dioHandler))
+                              ..getMyCourses(AppConstants.myCourses),
+                  ),
+                ],
+                child: const orgnizationBottomNavBar(),
+              ),
+        );
       case Routes.chatScreen:
         return CustomPageRoute(builder: (context) => const ChatScreen());
       case Routes.coursePlaying:
-        return CustomPageRoute(
-          builder: (context) =>  CoursePlayingScreen(),
-        );
+        return CustomPageRoute(builder: (context) => CoursePlayingScreen());
     }
     return null;
   }

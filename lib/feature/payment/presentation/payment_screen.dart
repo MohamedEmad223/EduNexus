@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+class PaymentScreen extends StatelessWidget {
+  const PaymentScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Payment'),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+      ),
+      body: Center(child: Text('Payment Screen')),
+    );
+  }
+
+    
+}

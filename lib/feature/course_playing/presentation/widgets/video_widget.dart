@@ -1,56 +1,30 @@
-import 'package:edunexus/feature/courses/data/model/all_lessons_model.dart';
+import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 
-class VideoWidget extends StatefulWidget {
-  const VideoWidget({super.key, required this.allLessonsModel});
+class VideoWidget extends StatelessWidget {
+  const VideoWidget({
+    super.key,
+    required this.flickManager,
+    this.onVideoFinished, this.allCoursesModel,
+  });
 
-  final AllLessonsModel allLessonsModel;
-
-  @override
-  State<VideoWidget> createState() => _VideoWidgetState();
-}
-
-class _VideoWidgetState extends State<VideoWidget> with WidgetsBindingObserver {
-  late FlickManager flickManager;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-
-    final path = widget.allLessonsModel.lessons?[0].path;
-
-    flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.network(
-        path ?? 'https://res.cloudinary.com/placeholder/video/upload/v0000000000/default.mp4',
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-
-    // 👇 PAUSE the video manually before dispose
-    flickManager.flickControlManager?.pause(); 
-
-    flickManager.dispose();
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.inactive ||
-        state == AppLifecycleState.paused) {
-      flickManager.flickControlManager?.pause();
-    }
-    super.didChangeAppLifecycleState(state);
-  }
+  final FlickManager flickManager;
+  final VoidCallback? onVideoFinished;
+  final AllCoursesModel? allCoursesModel;
 
   @override
   Widget build(BuildContext context) {
+    // Optionally, listen to video end
+    flickManager.flickVideoManager?.videoPlayerController?.addListener(() {
+      final controller = flickManager.flickVideoManager?.videoPlayerController;
+      if (controller != null &&
+          controller.value.isInitialized &&
+          controller.value.position >= controller.value.duration) {
+        onVideoFinished?.call();
+      }
+    });
+
     return FlickVideoPlayer(flickManager: flickManager);
   }
 }

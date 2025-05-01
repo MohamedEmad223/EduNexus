@@ -24,11 +24,12 @@ class DropDownWidgets extends StatelessWidget {
           borderSide: BorderSide(color: AppColor.primaryColor, width: 2.0.w),
         ),
       ),
-      items: <String>['Instructor', 'Admin'].map((String value) {
-        return DropdownMenuItem<String>(value: value, child: Text(value));
-      }).toList(),
+      items:
+          <String>['student', 'Organization'].map((String value) {
+            return DropdownMenuItem<String>(value: value, child: Text(value));
+          }).toList(),
       onChanged: (String? value) {
-        onRoleSelected(value); 
+        onRoleSelected(value);
       },
       validator: (value) {
         if (value == null) {

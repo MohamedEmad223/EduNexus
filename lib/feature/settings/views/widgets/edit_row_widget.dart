@@ -20,7 +20,7 @@ class EditRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.h),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onPressed,
         child: Container(
           padding: EdgeInsets.all(20.w),
@@ -28,7 +28,7 @@ class EditRowWidget extends StatelessWidget {
             color: AppColor.backGroundColor,
             borderRadius: BorderRadius.circular(25.r),
           ),
-        
+
           height: 65.h,
           width: double.infinity,
           child: Row(

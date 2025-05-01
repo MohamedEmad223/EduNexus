@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/app_regex.dart';
 import 'package:edunexus/core/helper/helper_methods.dart';
@@ -51,23 +53,25 @@ class _FormOfLoginScreenState extends State<FormOfLoginScreen> {
             'Login Success , Welcome!',
           );
 
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            Routes.botNavBar,
-            (route) => false,
+          CacheHelper().saveSecuredData(
+            key: AppConstants.token,
+            value: state.loginModel!.token!,
           );
-          state.loginModel?.token != null
-              ? CacheHelper().saveSecuredData(
-                key: AppConstants.token,
-                value: state.loginModel!.token!,
-              )
-              : null;
-          state.loginModel?.user?.sId != null
-              ? CacheHelper().saveSecuredData(
-                key: 'userId',
-                value: state.loginModel!.user!.sId!,
-              )
-              : null;
+
+          log(state.loginModel!.user!.role.toString());
+          if (state.loginModel?.user!.role == 'student') {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.botNavBar,
+              (route) => false,
+            );
+          } else {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.orgnavBar,
+              (route) => false,
+            );
+          }
         } else if (state is LoginError) {
           Navigator.pop(context);
           HelperMethods.showCustomSnackBarError(context, state.errorMessage!);
