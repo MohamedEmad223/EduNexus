@@ -29,7 +29,6 @@ class CourseDetails extends StatelessWidget {
                 ),
               ],
             ),
-
             Positioned(
               child: IconButton(
                 icon: Icon(Icons.arrow_back, color: AppColor.whiteColor),
@@ -38,7 +37,6 @@ class CourseDetails extends StatelessWidget {
                 },
               ),
             ),
-
             Positioned(
               top: 250.h,
               left: 0.w,
