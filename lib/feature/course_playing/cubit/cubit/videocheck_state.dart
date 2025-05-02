@@ -1,6 +1,5 @@
 part of 'videocheck_cubit.dart';
 
-@immutable
 sealed class VideocheckState {}
 
 final class VideocheckInitial extends VideocheckState {}
