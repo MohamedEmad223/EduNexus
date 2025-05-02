@@ -18,3 +18,4 @@ void main() async {
 
   CacheHelper().saveData(key: 'first_time_run', value: true);
 }
+// Wallet Number: 01010101010

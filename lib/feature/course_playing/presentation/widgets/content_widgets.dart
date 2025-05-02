@@ -36,9 +36,13 @@ class ContentWidgets extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                allCoursesModel?.title ?? 'No title',
-                style: AppTextStyle.poppins20BoldblackColor,
+              Expanded(
+                child: Text(
+                  allCoursesModel?.title ?? 'No title',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: AppTextStyle.poppins20BoldblackColor,
+                ),
               ),
             ],
           ),

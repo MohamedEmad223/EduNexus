@@ -96,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10.w,
                                   mainAxisSpacing: 10.h,
-                                  childAspectRatio: 1 / 2,
+                                  childAspectRatio: 0.65,
                                 ),
                             itemBuilder: (context, index) {
                               final course = courses[index];
@@ -123,28 +123,34 @@ class HomeScreen extends StatelessWidget {
                                   Positioned(
                                     right: 8,
                                     bottom: 8,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            isInCart
-                                                ? Colors.red
-                                                : AppColor.primaryColor,
-                                        minimumSize: Size(20.w, 36.h),
-                                      ),
+                                    child: ElevatedButton.icon(
                                       onPressed: () {
-                                        BlocProvider.of<HomeCubit>(
-                                          context,
-                                        ).toggleCartCourse(course);
+                                        BlocProvider.of<HomeCubit>(context).toggleCartCourse(course);
                                       },
-                                      child: Text(
+                                      icon: Icon(
+                                        isInCart ? Icons.remove_shopping_cart : Icons.add_shopping_cart,
+                                        size: 16,
+                                        color: Colors.white,
+                                      ),
+                                      label: Text(
                                         isInCart ? 'Remove' : 'Add to Cart',
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: isInCart ? Colors.redAccent : AppColor.primaryColor,
+                                        elevation: 4,
+                                        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(30.r),
                                         ),
                                       ),
                                     ),
                                   ),
+
                                 ],
                               );
                             },

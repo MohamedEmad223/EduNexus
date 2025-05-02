@@ -20,7 +20,7 @@ class AllCoursesRepo {
       var result = AllCoursesModel.fromJsonList(response);
       return Right(result);
     } on ApiException catch (e) {
-      return Left(e.errorModel.message!);
+      return Left(e.errorModel.message??"no data");
     }
   }
 }

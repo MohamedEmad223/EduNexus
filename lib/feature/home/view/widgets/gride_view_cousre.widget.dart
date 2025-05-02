@@ -17,60 +17,88 @@ class GrideViewCousre extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: AppColor.whiteColor,
-          borderRadius: BorderRadius.circular(15.r),
+          borderRadius: BorderRadius.circular(12.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.15),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+          ],
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15.r),
-                topRight: Radius.circular(15.r),
+                topLeft: Radius.circular(12.r),
+                topRight: Radius.circular(12.r),
               ),
               child: CachedNetworkImage(
-                imageUrl: course?.thumbnail ?? 'There is no image',
-                height: 100.h,
+                imageUrl: course?.thumbnail ?? '',
+                height: 85.h,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                course?.title ?? 'There is no title',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                course?.description ?? 'There is no description',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(course?.category ?? 'There is no category'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(course?.rate != null ? '${course!.rate}' : 'No rate'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                course?.price != null ? '\$${course!.price}' : 'No price',
+              padding: EdgeInsets.all(8.r),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    course?.title ?? 'There is no title',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    course?.description ?? 'There is no description',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 11.sp,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    course?.category ?? 'There is no category',
+                    style: TextStyle(
+                      fontSize: 11.sp,
+                      color: AppColor.primaryColor,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  SizedBox(height: 6.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.star, color: Colors.amber, size: 16),
+                          SizedBox(width: 4.w),
+                          Text(
+                            course?.rate != null ? '${course!.rate}' : 'No rate',
+                            style: TextStyle(fontSize: 11.sp),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        course?.price != null ? '\$${course!.price}' : 'No price',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
