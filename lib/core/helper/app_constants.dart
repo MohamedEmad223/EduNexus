@@ -19,6 +19,10 @@ class AppConstants {
     return 'courses/$courseId/enroll';
   }
 
+  static String postCheckvideoFinish(String courseId, String lessonId) {
+    return 'courses/$courseId/lessons/$lessonId/complete';
+  }
+
   static const String myCourses = 'courses/mycourses';
 
   static const String onlineCardIdIntegrationId = '4125487';
