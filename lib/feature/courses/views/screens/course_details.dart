@@ -58,7 +58,11 @@ class CourseDetails extends StatelessWidget {
                       children: [
                         Text(
                           allCoursesModel?.title ?? 'There is no title',
-                          style: AppTextStyle.poppins20BoldblackColor,
+                          style: AppTextStyle.poppins20BoldblackColor.copyWith(
+                            fontSize: 20.sp,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
                         ),
                         Text(
                           allCoursesModel?.price != null
