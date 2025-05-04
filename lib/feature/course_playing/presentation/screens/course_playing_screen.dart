@@ -3,6 +3,7 @@ import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/feature/course_playing/cubit/cubit/progressofstudent_cubit.dart';
 import 'package:edunexus/feature/course_playing/cubit/cubit/videocheck_cubit.dart';
+import 'package:edunexus/feature/course_playing/presentation/widgets/back_arrow_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/content_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/disscussion.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/material_widgets.dart';
@@ -129,24 +130,7 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
                             allCoursesModel: widget.allCoursesModel,
                           ),
                         ),
-                        Positioned(
-                          top: 40.h,
-                          left: 15.w,
-                          child: GestureDetector(
-                            onTap: () => Navigator.pop(context),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.5),
-                                shape: BoxShape.circle,
-                              ),
-                              padding: EdgeInsets.all(8.w),
-                              child: const Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
+                        BackArrowWidgets()
                       ],
                     ),
                     Expanded(
