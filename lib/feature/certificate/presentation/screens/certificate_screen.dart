@@ -3,10 +3,10 @@ import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/certificate/cubit/cubit/getusercertificate_cubit.dart';
+import 'package:edunexus/feature/certificate/presentation/widgets/shimmer_loading_certificate_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CertificateScreen extends StatefulWidget {
@@ -29,6 +29,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
     final userId = await CacheHelper().getSecuredData(key: AppConstants.userId);
     if (userId != null) {
       getusercertificateCubit = BlocProvider.of<GetusercertificateCubit>(
+        // ignore: use_build_context_synchronously
         context,
       );
       getusercertificateCubit.getUserCertificate(
@@ -48,54 +49,6 @@ class _CertificateScreenState extends State<CertificateScreen> {
     await _initializeCertificate();
   }
 
-  Widget _buildCustomShimmerCard() {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      elevation: 2,
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
-              child: Container(
-                width: double.infinity,
-                height: 100.h,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: 8.h),
-            Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
-              child: Container(width: 150.w, height: 16.h, color: Colors.white),
-            ),
-            SizedBox(height: 4.h),
-            Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
-              child: Container(width: 120.w, height: 12.h, color: Colors.white),
-            ),
-            SizedBox(height: 8.h),
-            Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
-              child: Container(
-                width: 140.w,
-                height: 36.h,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +71,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
               return ListView.builder(
                 padding: const EdgeInsets.all(16),
                 itemCount: 6,
-                itemBuilder: (context, index) => _buildCustomShimmerCard(),
+                itemBuilder: (context, index) => ShimmerLoadingCertificateScreen(),
               );
             } else if (state is GetusercertificateFailure) {
               return Center(child: Text(state.error ?? 'Error'));

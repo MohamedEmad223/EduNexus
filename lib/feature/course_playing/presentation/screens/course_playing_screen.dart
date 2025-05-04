@@ -6,6 +6,7 @@ import 'package:edunexus/feature/course_playing/cubit/cubit/videocheck_cubit.dar
 import 'package:edunexus/feature/course_playing/presentation/widgets/content_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/disscussion.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/material_widgets.dart';
+import 'package:edunexus/feature/course_playing/presentation/widgets/tab_bar_container_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/video_widget.dart';
 import 'package:edunexus/feature/courses/cubit/cubit/courses_all_lessons_cubit.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
@@ -156,13 +157,11 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
                             flickManager: flickManager!,
                             allCoursesModel: widget.allCoursesModel,
                           ),
-                          Center(
-                            child: MaterialWidgets(
-                              summary:
-                                  allLessonsModel?.lessons?[0].summary ??
-                                  "There is no summary",
-                              allCoursesModel: cubit.allCoursesList,
-                            ),
+                          MaterialWidgets(
+                            summary:
+                                allLessonsModel?.lessons?[0].summary ??
+                                "There is no summary",
+                            allCoursesModel: cubit.allCoursesList,
                           ),
                           const Disscussion(),
                         ],
@@ -170,25 +169,7 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
                     ),
                   ],
                 ),
-                bottomNavigationBar: Container(
-                  padding: EdgeInsets.symmetric(vertical: 30.w),
-                  color: AppColor.whiteColor,
-                  child: TabBar(
-                    labelColor: AppColor.primaryColor,
-                    unselectedLabelColor: Colors.grey,
-                    indicatorColor: AppColor.primaryColor,
-                    labelStyle: TextStyle(fontSize: 15.sp, height: 1.h),
-                    unselectedLabelStyle: TextStyle(
-                      fontSize: 14.sp,
-                      height: 1.h,
-                    ),
-                    tabs: const [
-                      Tab(text: 'Overview'),
-                      Tab(text: 'Materials'),
-                      Tab(text: 'Discussion'),
-                    ],
-                  ),
-                ),
+                bottomNavigationBar: TabBarContainerWidgets(),
               ),
             );
           }
