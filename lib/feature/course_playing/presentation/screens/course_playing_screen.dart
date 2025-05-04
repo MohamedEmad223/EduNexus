@@ -55,7 +55,10 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
       setState(() {
         this.progressPath = progressPath;
       });
-      context.read<ProgressofstudentCubit>().getAllLessons(progressPath);
+      if (!mounted) return;
+      if (!context.read<ProgressofstudentCubit>().isClosed) {
+        context.read<ProgressofstudentCubit>().getAllLessons(progressPath);
+      }
     }
   }
 
@@ -77,8 +80,6 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
 
     super.dispose();
   }
-
- 
 
   @override
   Widget build(BuildContext context) {

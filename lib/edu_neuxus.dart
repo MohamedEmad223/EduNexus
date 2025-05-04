@@ -1,6 +1,8 @@
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/routes/app_rotes.dart';
 import 'package:edunexus/core/routes/routes.dart';
+import 'package:edunexus/feature/course_playing/cubit/cubit/videocheck_cubit.dart';
+import 'package:edunexus/feature/course_playing/data/repos/video_check_repo.dart';
 import 'package:edunexus/feature/home/cubit/home_cubit.dart';
 import 'package:edunexus/feature/home/data/repos/all_courses_repo.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +28,18 @@ class EduNeuxus extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          create: (context) => VideocheckCubit(VideoCheckRepo(DioHandler())),
+        ),
+        BlocProvider(
           create:
               (context) => CoursesAllLessonsCubit(AllLessonsRepo(DioHandler())),
         ),
-        BlocProvider(create: (context) => HomeCubit(
-          AllCoursesRepo(DioHandler()),
-        )..getAllCourses(AppConstants.getAllCourses)),
+        BlocProvider(
+          create:
+              (context) =>
+                  HomeCubit(AllCoursesRepo(DioHandler()))
+                    ..getAllCourses(AppConstants.getAllCourses),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),

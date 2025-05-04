@@ -16,6 +16,10 @@ class AppConstants {
     return 'courses/$courseId/lessons';
   }
 
+  static String getUserCertificate(String userId) {
+    return 'certificates/user/$userId';
+  }
+
   static String genrollCourseContent(String courseId) {
     return 'courses/$courseId/enroll';
   }

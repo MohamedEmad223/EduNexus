@@ -12,15 +12,21 @@ class VideocheckCubit extends Cubit<VideocheckState> {
   final VideoCheckRepo videoCheckRepo;
 
   Future<void> getAllLessons(String path) async {
-    emit(VideocheckLoading());
+  if (isClosed) return;
+  emit(VideocheckLoading());
 
-    final token =
-        await CacheHelper().getSecuredData(key: AppConstants.token) ?? '';
-    final result = await videoCheckRepo.checkVideo(path, token);
-    result.fold((error) => emit(VideocheckError(message: error)), (
-      allcheckVideoModel,
-    ) {
-      emit(VideocheckLoaded(checkVideoModel: allcheckVideoModel));
-    });
-  }
+  final token =
+      await CacheHelper().getSecuredData(key: AppConstants.token) ?? '';
+  final result = await videoCheckRepo.checkVideo(path, token);
+  if (isClosed) return;
+  result.fold(
+    (error) {
+      if (!isClosed) emit(VideocheckError(message: error));
+    },
+    (allcheckVideoModel) {
+      if (!isClosed) emit(VideocheckLoaded(checkVideoModel: allcheckVideoModel));
+    },
+  );
+}
+
 }

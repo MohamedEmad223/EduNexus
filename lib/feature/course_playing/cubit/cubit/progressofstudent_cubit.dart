@@ -13,6 +13,7 @@ class ProgressofstudentCubit extends Cubit<ProgressofstudentState> {
   final GetProgressOfStudentRepo getProgressOfStudentRepo;
 
   Future<void> getAllLessons(String path) async {
+    if (isClosed) return; // Prevent emit if already closed
     emit(ProgressofstudentLoading());
 
     final token =
@@ -21,14 +22,20 @@ class ProgressofstudentCubit extends Cubit<ProgressofstudentState> {
       path,
       token,
     );
-    result.fold((error) => emit(ProgressofstudentError(message: error)), (
-      getProgressOfStudentModel,
-    ) {
-      emit(
-        ProgressofstudentLoaded(
-          getProgressOfStudentModel: getProgressOfStudentModel,
-        ),
-      );
-    });
+    if (isClosed) return;
+    result.fold(
+      (error) {
+        if (!isClosed) emit(ProgressofstudentError(message: error));
+      },
+      (getProgressOfStudentModel) {
+        if (!isClosed) {
+          emit(
+            ProgressofstudentLoaded(
+              getProgressOfStudentModel: getProgressOfStudentModel,
+            ),
+          );
+        }
+      },
+    );
   }
 }
