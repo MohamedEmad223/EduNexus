@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LearnedTodayContainer extends StatelessWidget {
-  const LearnedTodayContainer({super.key});
+  final String progress; // Between 0.0 and 1.0
+  final String displayProgress; // For "46min / 60min"
+
+  const LearnedTodayContainer({
+    super.key,
+    required this.progress,
+    required this.displayProgress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +40,13 @@ class LearnedTodayContainer extends StatelessWidget {
             SizedBox(height: 5.h),
             RichText(
               text: TextSpan(
-                text: '46min',
+                text: displayProgress,
                 style: AppTextStyle.poppins16w400blackColor,
-                children: [
-                  TextSpan(
-                    text: ' / 60min',
-                    style: AppTextStyle.poppins12w400lightdarkGreyColor,
-                  ),
-                ],
               ),
             ),
             SizedBox(height: 10.h),
             LinearProgressIndicator(
-              value: 0.77,
+              value: progress.isNotEmpty ? double.parse(progress) : 0.0,
               backgroundColor: AppColor.lightGreyColor,
               color: AppColor.primaryColor,
               minHeight: 5.h,

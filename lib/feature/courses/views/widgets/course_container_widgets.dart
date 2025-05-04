@@ -1,7 +1,9 @@
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/course_playing/cubit/cubit/progressofstudent_cubit.dart';
 import 'package:edunexus/feature/course_playing/cubit/cubit/videocheck_cubit.dart';
+import 'package:edunexus/feature/course_playing/data/repos/get_progress_of_student_repo.dart';
 import 'package:edunexus/feature/course_playing/data/repos/video_check_repo.dart';
 import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
 import 'package:edunexus/feature/home/data/model/all_courses.dart';
@@ -73,11 +75,23 @@ class CourseContainerWidgets extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) => BlocProvider(
-                                create:
-                                    (context) => VideocheckCubit(
-                                      VideoCheckRepo(DioHandler()),
-                                    ),
+                              (context) => MultiBlocProvider(
+                                providers: [
+                                  BlocProvider(
+                                    create:
+                                        (context) => VideocheckCubit(
+                                          VideoCheckRepo(DioHandler()),
+                                        ),
+                                  ),
+                                  BlocProvider(
+                                    create:
+                                        (context) => ProgressofstudentCubit(
+                                          GetProgressOfStudentRepo(
+                                            DioHandler(),
+                                          ),
+                                        ),
+                                  ),
+                                ],
                                 child: CoursePlayingScreen(
                                   courseId: allCoursesModel.sId ?? '',
                                   allCoursesModel: allCoursesModel,

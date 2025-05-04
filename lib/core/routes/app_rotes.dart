@@ -11,6 +11,8 @@ import 'package:edunexus/feature/auth/register/data/repo/sign_up_repository.dart
 import 'package:edunexus/feature/auth/register/presentation/screens/register_screen.dart';
 import 'package:edunexus/feature/cart/presentation/screens/cart_screen.dart';
 import 'package:edunexus/feature/chat/presentaion/screens/chat_screen.dart';
+import 'package:edunexus/feature/course_playing/cubit/cubit/progressofstudent_cubit.dart';
+import 'package:edunexus/feature/course_playing/data/repos/get_progress_of_student_repo.dart';
 import 'package:edunexus/feature/course_playing/presentation/screens/course_playing_screen.dart';
 import 'package:edunexus/feature/courses/cubit/cubit/cubit/my_course_cubit.dart';
 import 'package:edunexus/feature/courses/data/repo/my_courses_repo.dart';
@@ -96,6 +98,12 @@ class AppRoutes {
                   ),
                   BlocProvider(
                     create:
+                        (context) => ProgressofstudentCubit(
+                          GetProgressOfStudentRepo(dioHandler),
+                        ),
+                  ),
+                  BlocProvider(
+                    create:
                         (context) =>
                             UpdateuserCubit(UpdateUserRepository(dioHandler)),
                   ),
@@ -163,6 +171,12 @@ class AppRoutes {
                     create:
                         (context) =>
                             UpdateuserCubit(UpdateUserRepository(dioHandler)),
+                  ),
+                  BlocProvider(
+                    create:
+                        (context) => ProgressofstudentCubit(
+                          GetProgressOfStudentRepo(dioHandler),
+                        ),
                   ),
                   BlocProvider(
                     create:

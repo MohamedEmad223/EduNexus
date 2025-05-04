@@ -23,7 +23,7 @@ class AllLessonsRepo {
       log(result.toString());
       return Right(result);
     } on ApiException catch (e) {
-      return Left(e.errorModel.message!);
+      return Left(e.errorModel.message??'');
     }
   }
 }

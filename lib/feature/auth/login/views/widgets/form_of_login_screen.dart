@@ -58,6 +58,11 @@ class _FormOfLoginScreenState extends State<FormOfLoginScreen> {
             value: state.loginModel!.token!,
           );
 
+          CacheHelper().saveSecuredData(
+            key: AppConstants.userId,
+            value: state.loginModel!.user!.sId!,
+          );
+
           log(state.loginModel!.user!.role.toString());
           if (state.loginModel?.user!.role == 'student') {
             Navigator.pushNamedAndRemoveUntil(

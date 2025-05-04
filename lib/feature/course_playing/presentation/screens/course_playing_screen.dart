@@ -1,6 +1,7 @@
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
+import 'package:edunexus/feature/course_playing/cubit/cubit/progressofstudent_cubit.dart';
 import 'package:edunexus/feature/course_playing/cubit/cubit/videocheck_cubit.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/content_widgets.dart';
 import 'package:edunexus/feature/course_playing/presentation/widgets/disscussion.dart';
@@ -29,8 +30,10 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
   bool isVideoFinished = false;
   FlickManager? flickManager;
   String? _firstLessonId;
+  String? progressPath;
 
   void handleVideoFinished() {
+    if (isVideoFinished) return;
     setState(() {
       isVideoFinished = true;
     });
@@ -41,6 +44,18 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
     if (courseId != null && lessonId != null) {
       final path = AppConstants.postCheckvideoFinish(courseId, lessonId);
       context.read<VideocheckCubit>().getAllLessons(path);
+    }
+    if (courseId != null && lessonId != null) {
+      final path = AppConstants.postCheckvideoFinish(courseId, lessonId);
+      context.read<VideocheckCubit>().getAllLessons(path);
+
+      final progressPath = AppConstants.getProgressOfStudent(
+        courseId,
+      ); // Add this method
+      setState(() {
+        this.progressPath = progressPath;
+      });
+      context.read<ProgressofstudentCubit>().getAllLessons(progressPath);
     }
   }
 
@@ -59,8 +74,11 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
   void dispose() {
     flickManager?.flickControlManager?.pause();
     flickManager?.dispose();
+
     super.dispose();
   }
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +192,7 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
             );
           }
 
-          return Container(); 
+          return Container();
         },
       ),
     );
