@@ -23,7 +23,7 @@ class CoursesScreen extends StatelessWidget {
         elevation: 0,
         title: Text(
           'My Courses',
-          style: AppTextStyle.poppins18w500lightBlackColor,
+          style: AppTextStyle.poppins16w600primaryColor,
         ),
         centerTitle: true,
       ),

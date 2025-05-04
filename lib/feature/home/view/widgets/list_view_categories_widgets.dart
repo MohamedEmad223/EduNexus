@@ -19,6 +19,7 @@ class ListViewCategoriesWidgets extends StatelessWidget {
           final category = categories[index];
           return Padding(
             padding: EdgeInsets.only(right: 10.w),
+
             child: Container(
               height: 25.h,
               width: 100.w,
@@ -26,7 +27,14 @@ class ListViewCategoriesWidgets extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20.r),
               ),
-              child: Center(child: Text('$category')),
+              child: Center(
+                child: Text(
+                  '$category',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
           );
         },

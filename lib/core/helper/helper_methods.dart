@@ -1,7 +1,9 @@
+import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HelperMethods {
   HelperMethods._();
@@ -31,6 +33,46 @@ class HelperMethods {
             ),
           ),
     );
+  }
+
+  static void svgPrecacheImage() {
+    const cacheSvgImages = [
+      AppImages.arrowIcon,
+      AppImages.bankCard,
+      AppImages.cancelIcone,
+      AppImages.cartImage,
+      AppImages.correctIcon,
+      AppImages.courseDetails,
+      AppImages.coursesHistoryIcon,
+      AppImages.coursesIcon,
+      AppImages.crownIcone,
+      AppImages.doneIcone,
+      AppImages.editIcon,
+      AppImages.editProfile,
+      AppImages.fileIcone,
+      AppImages.icon,
+      AppImages.iconApp,
+      AppImages.learn,
+      AppImages.lockIcon,
+      AppImages.logOutIcon,
+      AppImages.notificationIcon,
+      AppImages.onBoardingImage,
+      AppImages.oneleaderBoardImage,
+      AppImages.personIcon,
+      AppImages.resultScreen,
+      AppImages.splashLogo,
+      AppImages.threeleaderBoardImage,
+      AppImages.timeIcon,
+      AppImages.twoleaderBoardImage,
+    ];
+
+    for (String element in cacheSvgImages) {
+      var loader = SvgAssetLoader(element);
+      svg.cache.putIfAbsent(
+        loader.cacheKey(null),
+        () => loader.loadBytes(null),
+      );
+    }
   }
 
   static Future<Widget?> showAlertDialog(context) {
