@@ -90,8 +90,9 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
     return BlocListener<CoursesAllLessonsCubit, CoursesAllLessonsState>(
       listener: (context, state) {
         if (state is CoursesAllLessonsSuccess &&
-            state.allLessonsModel?.lessons?.isNotEmpty == true) {
-          _firstLessonId = state.allLessonsModel!.lessons!.first.id.toString();
+            state.allLessonsModel?.isNotEmpty == true &&
+            state.allLessonsModel!.first.lessons?.isNotEmpty == true) {
+          _firstLessonId = state.allLessonsModel!.first.lessons?.first.id.toString();
         }
       },
       child: BlocBuilder<CoursesAllLessonsCubit, CoursesAllLessonsState>(
@@ -110,7 +111,7 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
 
             flickManager ??= FlickManager(
               videoPlayerController: VideoPlayerController.network(
-                allLessonsModel?.lessons?[0].path ?? '',
+                allLessonsModel?.first.lessons?[0].path ?? '',
               ),
             );
 
@@ -143,7 +144,7 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
                           ),
                           MaterialWidgets(
                             summary:
-                                allLessonsModel?.lessons?[0].summary ??
+                                allLessonsModel?[0].lessons?[0].summary ??
                                 "There is no summary",
                             allCoursesModel: cubit.allCoursesList,
                           ),
