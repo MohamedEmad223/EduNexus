@@ -50,18 +50,20 @@ class CourseDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Title and price
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          allCoursesModel?.title ?? 'There is no title',
-                          style: AppTextStyle.poppins20BoldblackColor.copyWith(
-                            fontSize: 20.sp,
+                        Expanded(
+                          // Wrap with Expanded
+                          child: Text(
+                            allCoursesModel?.title ?? 'There is no title',
+                            style: AppTextStyle.poppins20BoldblackColor
+                                .copyWith(fontSize: 20.sp),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
                         ),
+                        SizedBox(width: 10.w),
                         Text(
                           allCoursesModel?.price != null
                               ? '\$${allCoursesModel!.price}'
@@ -70,6 +72,7 @@ class CourseDetails extends StatelessWidget {
                         ),
                       ],
                     ),
+
                     SizedBox(height: 20.h),
                     Text(
                       '6h 14min · 24 Lessons',
@@ -92,10 +95,25 @@ class CourseDetails extends StatelessWidget {
                       "Catregory",
                       style: AppTextStyle.poppins20BoldblackColor,
                     ),
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 4.h),
                     Text(
                       allCoursesModel?.category ?? 'There is no description',
-                      style: TextStyle(fontSize: 12.sp, color: Colors.grey),
+                      style: AppTextStyle.poppins16w600primaryColor.copyWith(
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    Text(
+                      "Content",
+                      style: AppTextStyle.poppins20BoldblackColor,
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      allCoursesModel?.lessons.toString() ??
+                          'There is no description',
+                      style: AppTextStyle.poppins16w600primaryColor.copyWith(
+                        fontSize: 14.sp,
+                      ),
                     ),
                   ],
                 ),

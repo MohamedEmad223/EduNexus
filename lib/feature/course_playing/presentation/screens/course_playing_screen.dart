@@ -53,7 +53,7 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
 
       final progressPath = AppConstants.getProgressOfStudent(
         courseId,
-      ); // Add this method
+      ); 
       setState(() {
         this.progressPath = progressPath;
       });
