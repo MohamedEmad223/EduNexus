@@ -20,7 +20,7 @@ class CoursesAllLessonsCubit extends Cubit<CoursesAllLessonsState> {
     result.fold((error) => emit(CoursesAllLessonsError(message: error)), (
       allLessonsModel,
     ) {
-      emit(CoursesAllLessonsSuccess(allLessonsModel: [allLessonsModel]));
+      emit(CoursesAllLessonsSuccess(allLessonsModel: allLessonsModel));
     });
   }
 }

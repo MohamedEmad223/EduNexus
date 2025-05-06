@@ -72,7 +72,8 @@ class AppRoutes {
               ),
         );
       case Routes.home:
-        return CustomPageRoute(builder: (context) => const HomeScreen());
+        return CustomPageRoute(builder: (context) => HomeScreen());
+
       case Routes.settings:
         return CustomPageRoute(
           builder:

@@ -29,6 +29,7 @@ class Certificates {
   String? userId;
   CourseId? courseId;
   String? certificateUrl;
+  String? certificateImageUrl;
   String? issueDate;
   int? iV;
 
@@ -37,6 +38,7 @@ class Certificates {
       this.userId,
       this.courseId,
       this.certificateUrl,
+      this.certificateImageUrl,
       this.issueDate,
       this.iV});
 
@@ -47,6 +49,7 @@ class Certificates {
         ? CourseId.fromJson(json['courseId'])
         : null;
     certificateUrl = json['certificateUrl'];
+    certificateImageUrl = json['certificateImageUrl'];
     issueDate = json['issueDate'];
     iV = json['__v'];
   }
@@ -59,6 +62,7 @@ class Certificates {
       data['courseId'] = courseId!.toJson();
     }
     data['certificateUrl'] = certificateUrl;
+    data['certificateImageUrl'] = certificateImageUrl;
     data['issueDate'] = issueDate;
     data['__v'] = iV;
     return data;

@@ -15,7 +15,6 @@ void main() async {
   final token = await CacheHelper().getSecuredData(key: AppConstants.token);
   runApp(EduNeuxus(appRoutes: AppRoutes(), isLoggedIn: token != null));
   ScreenUtil.ensureScreenSize();
-  // HelperMethods.svgPrecacheImage();
   showOnBoarding = CacheHelper().getData(key: 'first_time_run');
 
   CacheHelper().saveData(key: 'first_time_run', value: true);

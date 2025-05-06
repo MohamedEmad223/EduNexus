@@ -1,21 +1,33 @@
 part of 'videocheck_cubit.dart';
 
-sealed class VideocheckState {}
+abstract class VideocheckState {}
 
-final class VideocheckInitial extends VideocheckState {}
+class VideocheckInitial extends VideocheckState {}
 
+class VideocheckLoading extends VideocheckState {}
 
-final class VideocheckLoading extends VideocheckState {}
-
-final class VideocheckLoaded extends VideocheckState {
+class VideocheckLoaded extends VideocheckState {
   final CheckVideoModel checkVideoModel;
 
   VideocheckLoaded({required this.checkVideoModel});
 }
 
+class VideocheckError extends VideocheckState {
+  final String? message;
 
-final class VideocheckError extends VideocheckState {
-  final String message;
+  VideocheckError({this.message});
+}
 
-  VideocheckError({required this.message});
+class VideocheckCompleteLoading extends VideocheckState {}
+
+class VideocheckCompleteSuccess extends VideocheckState {
+  final String? message;
+
+  VideocheckCompleteSuccess({required this.message});
+}
+
+class VideocheckCompleteError extends VideocheckState {
+  final String? message;
+
+  VideocheckCompleteError({this.message});
 }

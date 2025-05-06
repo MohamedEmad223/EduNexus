@@ -16,6 +16,17 @@ class HomeError extends HomeState {
   HomeError({required this.errorMessage});
 }
 
+class HomeSearchResults extends HomeState {
+  final List<AllCoursesModel> allCoursesList;
+  final List<AllCoursesModel> searchResults;
+  final String query;
+  
+  HomeSearchResults({
+    required this.allCoursesList,
+    required this.searchResults,
+    required this.query
+  });
+}
 
 class CartUpdated extends HomeState {
   final List<AllCoursesModel> cartCourses;

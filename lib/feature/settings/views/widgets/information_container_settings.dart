@@ -12,7 +12,7 @@ class InformationContainerSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 100.h,
+  
       color: AppColor.backGroundColor,
       child: Center(
         child: Padding(

@@ -94,7 +94,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
                     child: Column(
                       children: [
                         Image.network(
-                          cert.courseId?.thumbnail ?? '',
+                          cert.certificateImageUrl ?? '',
                           width: 200.w,
                           height: 100.h,
                           fit: BoxFit.cover,

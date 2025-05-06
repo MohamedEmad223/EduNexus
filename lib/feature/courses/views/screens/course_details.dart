@@ -3,6 +3,7 @@ import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/theme/app_color.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:edunexus/feature/courses/cubit/cubit/courses_all_lessons_cubit.dart';
+import 'package:edunexus/feature/courses/views/widgets/shimmer_course_lessons.dart';
 import 'package:edunexus/feature/home/data/model/all_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -137,25 +138,23 @@ class _CourseDetailsState extends State<CourseDetails> {
                     BlocBuilder<CoursesAllLessonsCubit, CoursesAllLessonsState>(
                       builder: (context, state) {
                         if (state is CoursesAllLessonsLoading) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
+                          return ShimmerCourseLessons();
                         } else if (state is CoursesAllLessonsSuccess) {
                           final lessons = state.allLessonsModel;
                           return ListView.separated(
-                            itemCount: lessons!.length,
+                            itemCount: lessons?.lessons?.length ?? 0,
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
-                            separatorBuilder: (_, __) => SizedBox(height: 10.h),
+                            separatorBuilder: (_, __) => SizedBox(height: 2.h),
                             itemBuilder: (context, index) {
-                              final lesson = lessons[index];
+                              final lesson = lessons!.lessons![index];
                               return ListTile(
                                 leading: Icon(
                                   Icons.play_circle,
                                   size: 40.sp,
-                                  color: AppColor.primaryColor,
+                                  color: AppColor.greyColor,
                                 ),
-                                subtitle: Text(lesson.description ?? ''),
+                                subtitle: Text(lesson.content ?? ''),
                                 tileColor: Colors.grey.shade100,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.r),

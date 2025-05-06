@@ -23,4 +23,20 @@ class VideoCheckRepo {
       return Left(e.toString());
     }
   }
+
+  /// ✅ ميثود جديدة بتبعت الريكوست لما كل الفيديوهات تخلص
+  Future<Either<String, String>> completeCourse(
+    String path,
+    String token,
+  ) async {
+    try {
+      final response = await apiServices.post(
+        path,
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+      return Right(response['message'] ?? 'تم الإنهاء بنجاح');
+    } on ApiException catch (e) {
+      return Left(e.toString());
+    }
+  }
 }
