@@ -67,13 +67,19 @@ class ContentWidgets extends StatelessWidget {
                 fontSize: 16.sp,
               ),
             ),
-            SizedBox(height: 4.h),
+
             Text(
-              allCoursesModel?.description ?? 
-              'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+              allCoursesModel?.description ??
+                  'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
               style: TextStyle(fontSize: 12.sp, color: Colors.grey),
             ),
-            SizedBox(height: 30.h),
+            SizedBox(height: 20.h),
+            Text(
+              'Course content',
+              style: AppTextStyle.poppins20BoldblackColor.copyWith(
+                fontSize: 16.sp,
+              ),
+            ),
 
             ListView.builder(
               shrinkWrap: true,
@@ -85,8 +91,10 @@ class ContentWidgets extends StatelessWidget {
 
                 // Check if this lesson has been completed or is currently playing
                 final bool isCurrentLesson = index == currentLessonIndex;
-                final bool isCompleted = index < currentLessonIndex || (isCurrentLesson && isVideoFinished);
-                
+                final bool isCompleted =
+                    index < currentLessonIndex ||
+                    (isCurrentLesson && isVideoFinished);
+
                 return GestureDetector(
                   onTap: () {
                     // Only allow changing to a different lesson if not the current one
@@ -116,23 +124,27 @@ class ContentWidgets extends StatelessWidget {
             InkWell(
               onTap: () {
                 // Only navigate to quiz if all lessons are completed
-                final bool allLessonsCompleted = currentLessonIndex >= lessons.length - 1 && isVideoFinished;
-                
+                final bool allLessonsCompleted =
+                    currentLessonIndex >= lessons.length - 1 && isVideoFinished;
+
                 if (allLessonsCompleted) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BlocProvider(
-                        create: (context) => QuizCubit(),
-                        child: QuestionsScreen(),
-                      ),
+                      builder:
+                          (context) => BlocProvider(
+                            create: (context) => QuizCubit(),
+                            child: QuestionsScreen(),
+                          ),
                     ),
                   );
                 } else {
                   // Show a snackbar indicating that all lessons must be completed first
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Please complete all lessons before taking the quiz.'),
+                      content: Text(
+                        'Please complete all lessons before taking the quiz.',
+                      ),
                       duration: Duration(seconds: 2),
                     ),
                   );
@@ -143,7 +155,8 @@ class ContentWidgets extends StatelessWidget {
                 index: (lessons.length + 1).toString().padLeft(2, '0'),
                 title: 'Quiz',
                 time: '15 min',
-                isPurshesed: currentLessonIndex >= lessons.length - 1 && isVideoFinished,
+                isPurshesed:
+                    currentLessonIndex >= lessons.length - 1 && isVideoFinished,
               ),
             ),
           ],
@@ -151,13 +164,13 @@ class ContentWidgets extends StatelessWidget {
       ),
     );
   }
-  
+
   // Helper method to format lesson duration
   String _getLessonDuration(Lesson lesson) {
     // You can implement actual duration calculation if you have the data
     return '2.5 Min';
   }
-  
+
   // Helper method to calculate total course duration
   String _calculateTotalDuration(List<Lesson> lessons) {
     // Placeholder - replace with actual calculation based on your data

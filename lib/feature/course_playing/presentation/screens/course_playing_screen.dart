@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:edunexus/core/helper/app_constants.dart';
 import 'package:edunexus/core/helper/shared_pref_helper.dart';
 import 'package:edunexus/core/theme/app_color.dart';
@@ -178,7 +180,7 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
         });
       }
     } catch (e) {
-      print("Error during lesson change: $e");
+      log("Error during lesson change: $e");
       setState(() {
         isChangingLesson = false;
       });
@@ -263,10 +265,11 @@ class _CoursePlayingScreenState extends State<CoursePlayingScreen> {
                           },
                         ),
                         MaterialWidgets(
-                          summary: currentLessonIndex < allLessons.length 
+                          title: widget.allCoursesModel?.title ?? "",
+                          pdfUrl: widget.allCoursesModel?.materials?.toString() ?? "",
+                          summary:  currentLessonIndex < allLessons.length 
                               ? (allLessons[currentLessonIndex].summary ?? "There is no summary")
                               : "There is no summary",
-                          allCoursesModel: cubit.allCoursesList,
                         ),
                         const Disscussion(),
                       ],
