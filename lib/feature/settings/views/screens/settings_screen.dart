@@ -3,6 +3,9 @@ import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/helper/shared_pref_helper.dart' show CacheHelper;
 import 'package:edunexus/core/networking/dio_handler.dart';
 import 'package:edunexus/core/theme/app_text_style.dart';
+import 'package:edunexus/feature/certificate/cubit/cubit/getusercertificate_cubit.dart';
+import 'package:edunexus/feature/certificate/data/repo/user_certificate_repo.dart';
+import 'package:edunexus/feature/certificate/presentation/screens/certificate_screen.dart';
 import 'package:edunexus/feature/edit_profile/cubit/cubit/updateuser_cubit.dart';
 import 'package:edunexus/feature/edit_profile/data/repos/update_user_repository.dart';
 import 'package:edunexus/feature/edit_profile/presentation/screens/edit_peofile_screen.dart';
@@ -26,7 +29,27 @@ class SettingsScreen extends StatelessWidget {
       body: Column(
         children: [
           InformationContainerSettings(),
-          SizedBox(height: 200.h),
+          SizedBox(height: 50.h),
+
+          EditRowWidget(
+            text: 'User Certificate',
+            imagePath: AppImages.editIcon,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => BlocProvider(
+                        create: (context) => GetusercertificateCubit(
+                          UserCertificateRepo(DioHandler())
+                        ),
+                        child: CertificateScreen(),
+                      ),
+                ),
+              );
+            },
+          ),
+          SizedBox(height: 50.h),
           EditRowWidget(
             text: 'Edit Profile',
             imagePath: AppImages.editIcon,
@@ -46,8 +69,7 @@ class SettingsScreen extends StatelessWidget {
               );
             },
           ),
-          SizedBox(height: 20.h),
-
+          SizedBox(height: 50.h),
           EditRowWidget(
             text: 'log Out',
             imagePath: AppImages.logOutIcon,

@@ -1,6 +1,6 @@
 import 'package:edunexus/core/helper/app_images.dart';
 import 'package:edunexus/core/theme/app_color.dart';
-import 'package:edunexus/core/theme/app_text_style.dart' show AppTextStyle;
+import 'package:edunexus/core/theme/app_text_style.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +14,9 @@ class RowCourseDetailsWidgets extends StatelessWidget {
     required this.time,
     required this.isFinshed,
     required this.isPurshesed,
-    required this.flickManager,
+    required this.isLocked,
+    this.flickManager,
+    this.onPlayPause,
   });
 
   final String index;
@@ -22,11 +24,13 @@ class RowCourseDetailsWidgets extends StatelessWidget {
   final String time;
   final bool isFinshed;
   final bool isPurshesed;
-  final FlickManager flickManager;
+  final bool isLocked;
+  final FlickManager? flickManager;
+  final VoidCallback? onPlayPause;
 
   @override
   Widget build(BuildContext context) {
-    final controller = flickManager.flickVideoManager?.videoPlayerController;
+    final controller = flickManager?.flickVideoManager?.videoPlayerController;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,14 +48,21 @@ class RowCourseDetailsWidgets extends StatelessWidget {
           maintainSize: true,
           maintainAnimation: true,
           maintainState: true,
-          child: Image.asset(AppImages.doneIcone, width: 20.w, height: 20.h),
+          child: Image.asset(
+            AppImages.doneIcone,
+            width: 20.w,
+            height: 20.h,
+          ),
         ),
         SizedBox(width: 10.w),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: TextStyle(fontSize: 14.sp)),
+              Text(
+                title,
+                style: TextStyle(fontSize: 14.sp),
+              ),
               SizedBox(height: 4.h),
               Text(
                 time,
@@ -64,22 +75,27 @@ class RowCourseDetailsWidgets extends StatelessWidget {
             ],
           ),
         ),
-        if (controller != null)
+        if (flickManager != null && controller != null)
           ValueListenableBuilder<VideoPlayerValue>(
             valueListenable: controller,
             builder: (context, value, child) {
               final isPlaying = value.isPlaying;
               return GestureDetector(
-                onTap: () {
-                  if (isPlaying) {
-                    flickManager.flickControlManager?.pause();
-                  } else {
-                    flickManager.flickControlManager?.play();
-                  }
-                },
+                onTap: isLocked || !isPurshesed
+                    ? null
+                    : () {
+                        if (isPlaying) {
+                          flickManager!.flickControlManager?.pause();
+                        } else {
+                          flickManager!.flickControlManager?.play();
+                        }
+                        onPlayPause?.call();
+                      },
                 child: CircleAvatar(
                   radius: 20.r,
-                  backgroundColor: AppColor.primaryColor,
+                  backgroundColor: isLocked || !isPurshesed
+                      ? AppColor.greyColor
+                      : AppColor.primaryColor,
                   child: Icon(
                     isPlaying ? Icons.pause : Icons.play_arrow,
                     color: Colors.white,
@@ -88,6 +104,16 @@ class RowCourseDetailsWidgets extends StatelessWidget {
                 ),
               );
             },
+          )
+        else
+          CircleAvatar(
+            radius: 20.r,
+            backgroundColor: AppColor.greyColor,
+            child: Icon(
+              Icons.lock,
+              color: Colors.white,
+              size: 25.sp,
+            ),
           ),
       ],
     );

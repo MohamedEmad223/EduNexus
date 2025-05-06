@@ -28,6 +28,7 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter_secure_storage: ^9.2.4
   url_launcher: ^6.3.1
+  shimmer: ^3.0.0
   pay_with_paymob: ^1.4.0
   flutter:
     sdk: flutter

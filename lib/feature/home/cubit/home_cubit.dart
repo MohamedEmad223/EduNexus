@@ -12,6 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
   final AllCoursesRepo allCoursesRepo;
   List<AllCoursesModel> allCoursesList = [];
   final List<AllCoursesModel> cartCourses = [];
+  List<AllCoursesModel> searchResults = [];
 
   Future<void> getAllCourses(String path) async {
     emit(HomeLoading());
@@ -38,8 +39,37 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void clearCart() {
-  cartCourses.clear();
-  emit(HomeSuccess(allCoursesList: allCoursesList));
-}
-
+    cartCourses.clear();
+    emit(HomeSuccess(allCoursesList: allCoursesList));
+  }
+  
+  void searchCourses(String query) {
+    if (query.isEmpty) {
+      searchResults = [];
+      emit(HomeSuccess(allCoursesList: allCoursesList));
+      return;
+    }
+    
+    searchResults = allCoursesList.where((course) {
+      final title = course.title?.toLowerCase() ?? '';
+      final description = course.description?.toLowerCase() ?? '';
+      final category = course.category?.toLowerCase() ?? '';
+      final searchLower = query.toLowerCase();
+      
+      return title.contains(searchLower) || 
+             description.contains(searchLower) || 
+             category.contains(searchLower);
+    }).toList();
+    
+    emit(HomeSearchResults(
+      allCoursesList: allCoursesList,
+      searchResults: searchResults,
+      query: query
+    ));
+  }
+  
+  void clearSearch() {
+    searchResults = [];
+    emit(HomeSuccess(allCoursesList: allCoursesList));
+  }
 }

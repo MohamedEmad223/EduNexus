@@ -11,12 +11,25 @@ class AppConstants {
   static const String courses = 'courses';
   static const String lessons = 'lessons';
   static const String updateProfile = 'auth/me';
+  static const String userId = '/userId';
   static String getCourseLessons(String courseId) {
     return 'courses/$courseId/lessons';
   }
 
+  static String getUserCertificate(String userId) {
+    return 'certificates/user/$userId';
+  }
+
   static String genrollCourseContent(String courseId) {
     return 'courses/$courseId/enroll';
+  }
+
+  static String getProgressOfStudent(String courseId) {
+    return 'courses/$courseId/progress';
+  }
+
+  static String postCheckvideoFinish(String courseId, String lessonId) {
+    return 'courses/$courseId/lessons/$lessonId/complete';
   }
 
   static const String myCourses = 'courses/mycourses';

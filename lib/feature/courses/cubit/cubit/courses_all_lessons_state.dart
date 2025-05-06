@@ -8,6 +8,7 @@ final class CoursesAllLessonsLoading extends CoursesAllLessonsState {}
 
 final class CoursesAllLessonsSuccess extends CoursesAllLessonsState {
   final AllLessonsModel? allLessonsModel;
+ 
   CoursesAllLessonsSuccess({required this.allLessonsModel});
 }
 
